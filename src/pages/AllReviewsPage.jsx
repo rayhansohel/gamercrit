@@ -4,7 +4,7 @@ const AllReviewsPage = () => {
   return (
     <div>
       <Helmet>
-        <title>All Reviews - Gamer Crit</title>
+        <title>Reviews - Gamer Crit</title>
       </Helmet>
       <div>All Reviews Page</div>
     </div>
