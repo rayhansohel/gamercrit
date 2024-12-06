@@ -15,15 +15,15 @@ const ThemeToggle = () => {
   return (
     <div className="flex items-center">
       <button
-        className="p-5 rounded-box bg-base-200 flex items-center justify-center"
+        className="w-16 h-16 rounded-box bg-base-200 flex items-center justify-center"
         data-tooltip-id="theme-tooltip"
         data-tooltip-content={`${theme === "dark" ? "Light" : "Dark"} Mode`}
         onClick={handleThemeChange}
       >
         {theme === "dark" ? (
-          <HiSun className="text-pink-600 text-2xl" />
+          <HiSun className="text-white text-3xl" />
         ) : (
-          <HiMoon className="text-pink-600 text-2xl" />
+          <HiMoon className="text-black text-3xl" />
         )}
       </button>
       {/* Tooltip Component */}
