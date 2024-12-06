@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import RegisterForm from './../components/RegisterForm';
 
 const RegisterPage = () => {
   return (
@@ -6,7 +7,9 @@ const RegisterPage = () => {
       <Helmet>
         <title>Register - Gamer Crit</title>
       </Helmet>
-      <div>Register Page</div>
+      <div>
+        <RegisterForm />
+      </div>
     </div>
   );
 };

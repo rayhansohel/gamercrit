@@ -1,14 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
-import { TbLogin2, TbLogout2, TbWriting } from "react-icons/tb";
 import { useContext } from "react";
 import defaultAvatar from "../assets/default-avatar.png";
 import { AuthContext } from "../contexts/AuthContext";
 import MenuItems from "./MenuItems";
 import BrandLogo from "../assets/gamercrit_logo.png";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { user, logOut, loading } = useContext(AuthContext);
-
+  console.log(user);
   if (loading) {
     return (
       <div className="navbar">
@@ -43,9 +43,8 @@ const Navbar = () => {
             <NavLink
               to="/auth/register"
               type="button"
-              className="btn btn-sm border border-base-300 shadow-none hover:text-pink-600"
+              className="btn btn-sm bg-base-100 shadow-none hover:text-pink-600"
             >
-              <TbWriting className="text-lg" />
               <span>Register</span>
             </NavLink>
           )}
@@ -54,33 +53,35 @@ const Navbar = () => {
             {user && user?.email ? (
               <>
                 <div className="flex items-center gap-2">
-                  <div className="avatar">
-                    <div className="w-8">
-                      <img
-                        src={user.photoURL || defaultAvatar}
-                        alt="User Avatar"
-                        className="rounded-box -2 -gray-800"
-                      />
-                    </div>
-                  </div>
                   <NavLink
                     to="/"
                     onClick={logOut}
                     type="button"
-                    className="btn btn-sm border border-base-300 shadow-none hover:text-pink-600"
+                    className="btn btn-sm bg-base-100 shadow-none hover:text-pink-600"
                   >
-                    <TbLogout2 className="text-lg -ml-1" />
                     <span>Logout</span>
                   </NavLink>
+                  <div className="avatar cursor-pointer">
+                    <div className="w-9">
+                      <img
+                        src={user.photoURL || defaultAvatar}
+                        alt="User Avatar"
+                        className="rounded-full"
+                        data-tooltip-id="theme-tooltip"
+                        data-tooltip-content={`${user.displayName}`}
+                      />
+                    </div>
+                    {/* Tooltip Component */}
+                    <Tooltip/>
+                  </div>
                 </div>
               </>
             ) : (
               <NavLink
                 to="/auth/login"
                 type="button"
-                className="btn btn-sm border border-base-300 shadow-none text-pink-600"
+                className="btn btn-sm bg-base-100 shadow-none text-pink-600"
               >
-                <TbLogin2 className="text-lg -ml-1" />
                 <span>Login</span>
               </NavLink>
             )}

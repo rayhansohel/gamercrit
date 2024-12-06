@@ -9,7 +9,7 @@ const MenuItems = () => {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `btn btn-sm w-full border border-base-300 shadow-none ${
+          `btn btn-sm w-full bg-base-100 shadow-none ${
             isActive ? "text-pink-600" : "hover:text-pink-600 transition"
           }`
         }
@@ -20,7 +20,7 @@ const MenuItems = () => {
       <NavLink
         to="/reviews"
         className={({ isActive }) =>
-          `btn btn-sm w-full border border-base-300 shadow-none ${
+          `btn btn-sm w-full bg-base-100 shadow-none ${
             isActive ? "text-pink-600" : "hover:text-pink-600 transition"
           }`
         }
@@ -33,7 +33,7 @@ const MenuItems = () => {
         <NavLink
           to="/add-review"
           className={({ isActive }) =>
-            `btn btn-sm w-full border border-base-300 shadow-none ${
+            `btn btn-sm w-full bg-base-100 shadow-none ${
               isActive ? "text-pink-600" : "hover:text-pink-600 transition"
             }`
           }
@@ -43,9 +43,9 @@ const MenuItems = () => {
       )}
       {user && user?.email && (
         <NavLink
-          to="/my-reviewse"
+          to="/my-reviews"
           className={({ isActive }) =>
-            `btn btn-sm w-full border border-base-300 shadow-none ${
+            `btn btn-sm w-full bg-base-100 shadow-none ${
               isActive ? "text-pink-600" : "hover:text-pink-600 transition"
             }`
           }
@@ -57,7 +57,7 @@ const MenuItems = () => {
         <NavLink
           to="/watch-list"
           className={({ isActive }) =>
-            `btn btn-sm w-full border border-base-300 shadow-none ${
+            `btn btn-sm w-full bg-base-100 shadow-none ${
               isActive ? "text-pink-600" : "hover:text-pink-600 transition"
             }`
           }
