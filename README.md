@@ -1,2 +1,2 @@
-# <img src="src/assets/gamercrit_logo.png" alt="" width="24px"> Gamer Crit
+# <img src="src/assets/gamercrit_logo.png" alt="" width="40px"> Gamer Crit
 
