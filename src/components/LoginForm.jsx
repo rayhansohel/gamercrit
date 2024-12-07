@@ -15,6 +15,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (user) {
+      // If user is already logged in, redirect to home page
       navigate("/");
     }
   }, [user, navigate]);
@@ -29,7 +30,14 @@ const LoginForm = () => {
           hideProgressBar: true,
         });
         window.location.reload();
-        navigate("/");
+        // Check if there's a redirect path saved in localStorage
+        const redirectTo = localStorage.getItem("redirectTo");
+        if (redirectTo) {
+          localStorage.removeItem("redirectTo");
+          navigate(redirectTo); // Redirect to the saved path
+        } else {
+          navigate("/"); // Redirect to home if no saved path
+        }
       })
       .catch(() => {
         toast.error("Google sign-in failed. Try again!", {
@@ -54,7 +62,15 @@ const LoginForm = () => {
           hideProgressBar: true,
         });
         window.location.reload();
-        navigate("/");
+        
+        // Check if there's a redirect path saved in localStorage
+        const redirectTo = localStorage.getItem("redirectTo");
+        if (redirectTo) {
+          localStorage.removeItem("redirectTo");
+          navigate(redirectTo); // Redirect to the saved path
+        } else {
+          navigate("/"); // Redirect to home if no saved path
+        }
       })
       .catch(() => {
         toast.error("Put valid email and password", {
@@ -66,7 +82,7 @@ const LoginForm = () => {
 
   return (
     <div>
-      <div className="card min-w-[350px] bg-base-200  border border-base-100 rounded-3xl flex flex-col items-center justify-center pt-12">
+      <div className="card min-w-[350px] bg-base-200 border border-base-100 rounded-3xl flex flex-col items-center justify-center pt-12">
         <div>
           <button
             onClick={handleGoogleSignIn}
@@ -100,7 +116,7 @@ const LoginForm = () => {
               required
             />
             <span
-              className="absolute right-2 top-[7px] cursor-pointer  hover:text-pink-600"
+              className="absolute right-2 top-[7px] cursor-pointer hover:text-pink-600"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? (

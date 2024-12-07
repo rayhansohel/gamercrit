@@ -56,13 +56,11 @@ const AddReviewPage = () => {
       <Helmet>
         <title>Add Review - Gamer Crit</title>
       </Helmet>
-      <div className="max-w-2xl mx-auto my-12 bg-base-200 border border-base-100 rounded-box p-8">
+      <div className="max-w-xl mx-auto md:my-12 bg-base-200 border border-base-100 rounded-box p-8">
         <h1 className="text-2xl mb-6 text-center">Add a New Review</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block font-medium mb-2">
-              Game Title
-            </label>
+            <label className="block font-medium mb-2">Game Title</label>
             <input
               type="text"
               name="title"
@@ -88,9 +86,7 @@ const AddReviewPage = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block font-medium mb-2">
-              Review Description
-            </label>
+            <label className="block font-medium mb-2">Review Description</label>
             <textarea
               name="description"
               value={formData.description}
@@ -109,16 +105,14 @@ const AddReviewPage = () => {
               value={formData.rating}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
-              placeholder="Rate the game (1-10)"
+              placeholder="Rate the game (1-5)"
               min="1"
-              max="10"
+              max="5"
               required
             />
           </div>
           <div className="mb-4">
-            <label className="block font-medium mb-2">
-              Publishing Year
-            </label>
+            <label className="block font-medium mb-2">Publishing Year</label>
             <input
               type="number"
               name="year"
