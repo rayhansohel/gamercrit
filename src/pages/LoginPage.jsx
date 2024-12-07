@@ -4,11 +4,11 @@ import LoginForm from './../components/LoginForm';
 
 const LoginPage = () => {
   return (
-    <div>
+    <div className="min-h-[calc(100vh-192px)] flex justify-center items-center">
       <Helmet>
         <title>Login - Gamer Crit</title>
       </Helmet>
-      <div>
+      <div >
         <LoginForm />
       </div>
     </div>

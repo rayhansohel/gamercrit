@@ -15,7 +15,7 @@ const ErrorPage = () => {
           Oops! The page you're looking for doesn't exist.
         </p>
         <Link to="/">
-          <button className="btn btn-sm mt-4 bg-pink-600 hover:bg-pink-700 text-white shadow-none">
+          <button className="btn btn-sm mt-4 bg-pink-600 hover:bg-pink-700 text-white border-none shadow-none">
             Go to Homepage
           </button>
         </Link>

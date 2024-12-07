@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "image": "https://i.ibb.co/zQyqWH5/1.png",
+    "alt": "Slide 1",
+    "title": "Discover the Ultimate Adventure",
+    "paragraph": "Dive into breathtaking open worlds with stunning graphics and immersive gameplay. Perfect for adventure enthusiasts!"
+  },
+  {
+    "id": 2,
+    "image": "https://i.ibb.co/GTPThyt/2.png",
+    "alt": "Slide 2",
+    "title": "Epic Battles Await",
+    "paragraph": "Gear up for intense combat action! Experience the thrill of real-time strategy and dynamic battlefields."
+  },
+  {
+    "id": 3,
+    "image": "https://i.ibb.co/8PkVVZ0/3.png",
+    "alt": "Slide 3",
+    "title": "Mysteries to Uncover",
+    "paragraph": "Embark on a journey full of puzzles, secrets, and challenging quests. Can you unravel the mysteries?"
+  },
+  {
+    "id": 4,
+    "image": "https://i.ibb.co/Kmmwfr5/4.png",
+    "alt": "Slide 4",
+    "title": "Master the Racing Tracks",
+    "paragraph": "Feel the adrenaline rush with high-speed racing games. Customize your ride and conquer the leaderboard!"
+  },
+  {
+    "id": 5,
+    "image": "https://i.ibb.co/P5gptGg/5.png",
+    "alt": "Slide 5",
+    "title": "Fantasy Realms Come Alive",
+    "paragraph": "Immerse yourself in captivating fantasy worlds. Build alliances, battle foes, and become the hero you were meant to be."
+  }
+]

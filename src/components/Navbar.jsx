@@ -20,9 +20,9 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-200 rounded-box px-4">
+      <div className="navbar bg-base-200 rounded-box px-4 flex justify-center">
         {/* Brand Logo */}
-        <div className="navbar-start flex gap-1 items-center">
+        <div className="lg:navbar-start flex items-center">
           <Link to="/">
             <div className="flex items-center justify-center">
               <img src={BrandLogo} alt="Brand Logo" className="w-10" />

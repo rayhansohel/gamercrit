@@ -3,7 +3,7 @@ import RegisterForm from './../components/RegisterForm';
 
 const RegisterPage = () => {
   return (
-    <div>
+    <div className="min-h-[calc(100vh-192px)] flex justify-center items-center">
       <Helmet>
         <title>Register - Gamer Crit</title>
       </Helmet>

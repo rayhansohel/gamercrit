@@ -2,12 +2,14 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 
-const MenuItems = () => {
+const MenuItems = ({ closeDropdown }) => {
   const { user } = useContext(AuthContext);
+
   return (
     <>
       <NavLink
         to="/"
+        onClick={closeDropdown}
         className={({ isActive }) =>
           `btn btn-sm w-full bg-base-100 shadow-none ${
             isActive ? "text-pink-600" : "hover:text-pink-600 transition"
@@ -19,6 +21,7 @@ const MenuItems = () => {
 
       <NavLink
         to="/reviews"
+        onClick={closeDropdown}
         className={({ isActive }) =>
           `btn btn-sm w-full bg-base-100 shadow-none ${
             isActive ? "text-pink-600" : "hover:text-pink-600 transition"
@@ -32,6 +35,7 @@ const MenuItems = () => {
       {user && user?.email && (
         <NavLink
           to="/add-review"
+          onClick={closeDropdown}
           className={({ isActive }) =>
             `btn btn-sm w-full bg-base-100 shadow-none ${
               isActive ? "text-pink-600" : "hover:text-pink-600 transition"
@@ -41,9 +45,11 @@ const MenuItems = () => {
           Add Review
         </NavLink>
       )}
+
       {user && user?.email && (
         <NavLink
           to="/my-reviews"
+          onClick={closeDropdown}
           className={({ isActive }) =>
             `btn btn-sm w-full bg-base-100 shadow-none ${
               isActive ? "text-pink-600" : "hover:text-pink-600 transition"
@@ -53,9 +59,11 @@ const MenuItems = () => {
           My Review
         </NavLink>
       )}
+
       {user && user?.email && (
         <NavLink
           to="/watch-list"
+          onClick={closeDropdown}
           className={({ isActive }) =>
             `btn btn-sm w-full bg-base-100 shadow-none ${
               isActive ? "text-pink-600" : "hover:text-pink-600 transition"

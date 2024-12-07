@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { HiMenu } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
-import { TbLogin2, TbLogout2, TbWriting } from "react-icons/tb";
 import { useContext } from "react";
 import defaultAvatar from "../assets/default-avatar.png";
 import { AuthContext } from "../contexts/AuthContext";
@@ -11,6 +10,7 @@ import MenuItems from "./MenuItems";
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -20,18 +20,30 @@ const Dropdown = () => {
     setIsOpen(false);
   };
 
+  // Close dropdown if click is outside of the dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className="btn btn-sm border border-base-300 bg-base-100 shadow-none text-pink-600 rounded-full h-10 w-10"
+        className="btn btn-sm shadow-none h-8 w-10"
       >
         {isOpen ? (
-          <span className="text-xl">
+          <span className="text-2xl">
             <IoClose />
           </span>
         ) : (
-          <span className="text-xl">
+          <span className="text-2xl">
             <HiMenu />
           </span>
         )}
@@ -39,17 +51,16 @@ const Dropdown = () => {
 
       {isOpen && (
         <div className="text-sm absolute top-16 -left-3  w-[300px] ">
-          <div className="flex p-5 bg-base-300 rounded-box">
+          <div className="flex p-5 bg-base-200 rounded-box">
             <div>
-              <div className="space-y-2 w-32">
+              <div className="space-y-2">
                 {!user && (
                   <NavLink
                     to="/auth/register"
                     type="button"
                     onClick={closeDropdown}
-                    className="btn btn-sm w-full border border-base-300 shadow-none"
+                    className="btn btn-sm w-full bg-base-100 shadow-none"
                   >
-                    <TbWriting className="text-xl" />
                     <span>Register</span>
                   </NavLink>
                 )}
@@ -75,9 +86,8 @@ const Dropdown = () => {
                             closeDropdown();
                           }}
                           type="button"
-                          className="btn btn-sm w-full border border-base-300 shadow-none"
+                          className="btn btn-sm w-full bg-base-100 shadow-none"
                         >
-                          <TbLogout2 className="text-lg" />
                           <span>Logout</span>
                         </NavLink>
                       </div>
@@ -87,9 +97,8 @@ const Dropdown = () => {
                       to="/auth/login"
                       type="button"
                       onClick={closeDropdown}
-                      className="btn btn-sm border border-base-300 shadow-none text-pink-600 w-full"
+                      className="btn btn-sm bg-base-100 shadow-none text-pink-600 w-full"
                     >
-                      <TbLogin2 className="text-lg" />
                       <span>Login</span>
                     </NavLink>
                   )}
@@ -98,7 +107,8 @@ const Dropdown = () => {
             </div>
             <div className="divider divider-horizontal"></div>
             <div className="space-y-2">
-              <MenuItems />
+              {/* Pass closeDropdown to MenuItems */}
+              <MenuItems closeDropdown={closeDropdown} />
             </div>
           </div>
         </div>

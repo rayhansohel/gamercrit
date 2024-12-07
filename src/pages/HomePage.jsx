@@ -1,12 +1,16 @@
 import { Helmet } from "react-helmet-async";
+import Hero from './../components/Hero';
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="min-h-[calc(100vh-96px)]">
       <Helmet>
         <title>Home - Gamer Crit</title>
       </Helmet>
-      <div>Home Page</div>
+      {/* Display Hero Slider*/}
+      <div>
+        <Hero />
+      </div>
     </div>
   );
 };
