@@ -3,27 +3,27 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const SocialLinks = () => {
   return (
-    <div className="bg-base-200 min-w-full h-16 flex items-center justify-center rounded-box">
+    <div className="min-w-full  flex rounded-box">
       {/* social icons  */}
       <div className="flex gap-4">
         <div
           href="https://www.facebook.com/RayhanSohel"
           target="_blank"
-          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-gray-700 hover:text-pink-600"
+          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-pink-600 hover:text-gray-700"
         >
           <FaFacebook />
         </div>
         <a
           href="https://x.com/rrayhanSohel"
           target="_blank"
-          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-gray-700 hover:text-pink-600"
+          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-pink-600 hover:text-gray-700"
         >
           <FaXTwitter />
         </a>
         <a
           href="https://www.instagram.com/arayhansohel/"
           target="_blank"
-          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-gray-700 hover:text-pink-600"
+          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-pink-600 hover:text-gray-700"
         >
           {" "}
           <FaInstagram />
@@ -31,7 +31,7 @@ const SocialLinks = () => {
         <a
           href="https://github.com/RayhanSohel"
           target="_blank"
-          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-gray-700 hover:text-pink-600"
+          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-pink-600 hover:text-gray-700"
         >
           {" "}
           <FaGithub />
@@ -39,7 +39,7 @@ const SocialLinks = () => {
         <a
           href="https://www.youtube.com/@gronetech"
           target="_blank"
-          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-gray-700 hover:text-pink-600"
+          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-pink-600 hover:text-gray-700"
         >
           {" "}
           <FaYoutube />

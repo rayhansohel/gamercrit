@@ -6,7 +6,6 @@ const HeroSlider = () => {
   const [slides, setSlides] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = useRef(null);
-  const autoSlideRef = useRef(null);
 
   // Fetch slider data
   useEffect(() => {
@@ -23,26 +22,6 @@ const HeroSlider = () => {
     fetchSlides();
   }, []);
 
-  // Auto play slides
-  useEffect(() => {
-    startAutoSlide();
-    return () => stopAutoSlide();
-  }, [currentSlide, slides]);
-
-  const startAutoSlide = () => {
-    stopAutoSlide();
-    autoSlideRef.current = setInterval(() => {
-      scrollToSlide(currentSlide + 1);
-    }, 5000);
-  };
-
-  const stopAutoSlide = () => {
-    if (autoSlideRef.current) {
-      clearInterval(autoSlideRef.current);
-      autoSlideRef.current = null;
-    }
-  };
-
   const scrollToSlide = (index) => {
     if (sliderRef.current && slides.length > 0) {
       const totalSlides = slides.length;
@@ -56,13 +35,9 @@ const HeroSlider = () => {
   };
 
   return (
-    <div
-      className="relative w-full"
-      onMouseEnter={stopAutoSlide}
-      onMouseLeave={startAutoSlide}
-    >
+    <div className="relative w-full">
       {/* Carousel */}
-      <div ref={sliderRef} className="carousel w-full  overflow-hidden">
+      <div ref={sliderRef} className="carousel w-full overflow-hidden">
         {slides.map((slide, index) => (
           <div
             id={`slide${index + 1}`}
@@ -75,14 +50,14 @@ const HeroSlider = () => {
               className="w-full object-cover"
             />
             {/* Title and Paragraph */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center text-white p-10  w-[400px] md:w-[700px] h-[300px] bg-[#ffaade15] backdrop-blur-sm rounded-box">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center text-white p-10 w-[400px] md:w-[700px] h-[300px] bg-[#ffaade15] backdrop-blur-sm rounded-box">
               <h2 className="text-3xl md:text-5xl font-bold mb-2 uppercase">{slide.title}</h2>
               <p className="text-md">{slide.paragraph}</p>
               <Link to="/reviews">
-          <button className="btn btn-sm mt-4 bg-pink-600 hover:bg-pink-700 text-white border-none shadow-none">
-            Explore More
-          </button>
-        </Link>
+                <button className="btn btn-sm mt-4 bg-pink-600 hover:bg-pink-700 text-white border-none shadow-none">
+                  Explore More
+                </button>
+              </Link>
             </div>
           </div>
         ))}

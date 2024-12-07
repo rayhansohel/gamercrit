@@ -6,7 +6,7 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import PrivateRoute from "./PrivateRoute";
 import AllReviewsPage from './../pages/AllReviewsPage';
-import AddReviewPage from './../pages/AddReviewPage';
+import AddReviewPage from '../pages/AddReviewPage';
 import MyReviewsPage from './../pages/MyReviewsPage';
 import GameWatchListPage from './../pages/GameWatchListPage';
 import ReviewDetailPage from './../pages/ReviewDetailPage';
