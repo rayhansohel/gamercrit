@@ -51,7 +51,7 @@ const Dropdown = () => {
 
       {isOpen && (
         <div className="text-sm absolute top-16 -left-3  w-[300px] ">
-          <div className="flex p-5 bg-base-200 rounded-box">
+          <div className="flex p-5 bg-base-200 border border-base-100 rounded-box">
             <div>
               <div className="space-y-2">
                 {!user && (

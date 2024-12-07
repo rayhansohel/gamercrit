@@ -123,7 +123,7 @@ const RegisterForm = () => {
 
   return (
     <div>
-      <div className="card min-w-[400px] bg-base-200 rounded-box flex flex-col items-center justify-center pt-8">
+      <div className="card min-w-[400px] bg-base-200 border border-base-100 rounded-box flex flex-col items-center justify-center pt-8">
         <div className="mt-10">
           <button
             onClick={handleGoogleRegister}

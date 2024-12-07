@@ -1,4 +1,3 @@
-import MenuItems from "./MenuItems";
 import { Link } from "react-router-dom";
 import BrandLogo from "../assets/gamercrit_logo.png";
 import SocialLinks from "./SocialLinks";
@@ -8,7 +7,7 @@ const Footer = () => {
     <div>
       <div className="space-y-4">
         <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-4">
-          <div className="bg-base-200 rounded-box p-6 md:col-span-2 xl:col-span-1">
+          <div className="bg-base-200 border border-base-100 rounded-box p-6 md:col-span-2 xl:col-span-1">
             <div className="flex items-center mb-2">
               <Link to="/">
                 <div className="flex items-center justify-center col-span-2">
@@ -28,7 +27,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="bg-base-200 rounded-box p-6">
+          <div className="bg-base-200 border border-base-100 rounded-box p-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-xl font-semibold mb-4">Stay Updated</h2>
               <p className="mb-2">
@@ -48,7 +47,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="bg-base-200 rounded-box p-6">
+          <div className="bg-base-200 border border-base-100 rounded-box p-6">
             <div>
               <h2 className="text-xl font-semibold pb-3">Social links</h2>
               <p className="mb-2">
@@ -59,7 +58,7 @@ const Footer = () => {
             <SocialLinks />
           </div>
         </div>
-        <div className="w-11/12 m-auto bg-base-100 rounded-box py-2 px-4 h-16 flex justify-center items-center">
+        <div className="w-11/12 m-auto bg-base-200 border border-base-100 rounded-box py-2 px-4 h-16 flex justify-center items-center">
           <p className="text-sm">
             © {new Date().getFullYear()}. Gamer Crit. All rights reserved.
           </p>

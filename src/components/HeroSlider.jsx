@@ -50,8 +50,8 @@ const HeroSlider = () => {
               className="w-full object-cover"
             />
             {/* Title and Paragraph */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center text-white p-10 w-[400px] md:w-[700px] h-[300px] bg-[#ffaade15] backdrop-blur-sm rounded-box">
-              <h2 className="text-3xl md:text-5xl font-bold mb-2 uppercase">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center text-white p-10 w-[400px] md:w-[700px] h-[300px] bg-[#0000002c] backdrop-blur-sm rounded-box">
+              <h2 className="text-3xl md:text-5xl mb-2 uppercase text-pink-600">
                 {slide.title}
               </h2>
               <p className="text-md">{slide.paragraph}</p>

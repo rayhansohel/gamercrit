@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-200 rounded-box px-4 flex justify-center">
+      <div className="navbar bg-base-200 border border-base-100 rounded-box px-4 flex justify-center">
         {/* Brand Logo */}
         <div className="lg:navbar-start flex items-center">
           <Link to="/">

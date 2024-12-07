@@ -66,7 +66,7 @@ const LoginForm = () => {
 
   return (
     <div>
-      <div className="card min-w-[350px] bg-base-200 rounded-3xl flex flex-col items-center justify-center pt-12">
+      <div className="card min-w-[350px] bg-base-200  border border-base-100 rounded-3xl flex flex-col items-center justify-center pt-12">
         <div>
           <button
             onClick={handleGoogleSignIn}

@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="font-poppins text-sm bg-base-300 min-h-screen">
+    <div className="font-poppins text-sm min-h-screen bg-base-300">
       <div className="sticky top-0 z-50 pt-4">
         {/* Common header */}
         <Header />
@@ -13,7 +13,7 @@ function App() {
         {/* load Content here */}
         <Outlet />
       </div>
-      <div className="py-4 bg-base-content">
+      <div className="py-4 border-t border-base-100">
         {/* Copyright footer */}
         <Footer />
       </div>
