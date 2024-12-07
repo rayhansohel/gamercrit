@@ -56,11 +56,10 @@ const AddReviewPage = () => {
       <Helmet>
         <title>Add Review - Gamer Crit</title>
       </Helmet>
-      <div className="max-w-xl mx-auto md:my-12 bg-base-200 border border-base-100 rounded-box p-8">
+      <div className="max-w-xl mx-auto my-6 md:my-12 bg-base-200 border border-base-100 rounded-box p-8">
         <h1 className="text-2xl mb-6 text-center">Add a New Review</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block font-medium mb-2">Game Title</label>
             <input
               type="text"
               name="title"
@@ -72,9 +71,6 @@ const AddReviewPage = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block font-medium mb-2">
-              Game Cover Image URL
-            </label>
             <input
               type="url"
               name="coverImage"
@@ -86,7 +82,6 @@ const AddReviewPage = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block font-medium mb-2">Review Description</label>
             <textarea
               name="description"
               value={formData.description}
@@ -97,34 +92,33 @@ const AddReviewPage = () => {
               required
             ></textarea>
           </div>
-          <div className="mb-4">
-            <label className="block font-medium mb-2">Rating</label>
-            <input
-              type="number"
-              name="rating"
-              value={formData.rating}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
-              placeholder="Rate the game (1-5)"
-              min="1"
-              max="5"
-              required
-            />
+          <div className="mb-4 md:flex md:space-x-4 space-y-5 md:space-y-0">
+            <div className="w-full md:w-1/2">
+              <input
+                type="number"
+                name="rating"
+                value={formData.rating}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                placeholder="Rate out of 5"
+                min="1"
+                max="5"
+                required
+              />
+            </div>
+            <div className="w-full md:w-1/2">
+              <input
+                type="number"
+                name="year"
+                value={formData.year}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                placeholder="Published year"
+                required
+              />
+            </div>
           </div>
           <div className="mb-4">
-            <label className="block font-medium mb-2">Publishing Year</label>
-            <input
-              type="number"
-              name="year"
-              value={formData.year}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
-              placeholder="e.g. 2023"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block font-medium mb-2">Genres</label>
             <select
               name="genre"
               value={formData.genre}
@@ -134,30 +128,32 @@ const AddReviewPage = () => {
             >
               <option value="">Select a Genre</option>
               <option value="Action">Action</option>
-              <option value="RPG">RPG</option>
+              <option value="RPG">Sport</option>
               <option value="Adventure">Adventure</option>
             </select>
           </div>
-          <div className="mb-4">
-            <label className="block font-medium mb-2">User Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              readOnly
-              className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block font-medium mb-2">User Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              readOnly
-              className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
-            />
-          </div>
+
+          <div className="w-full mb-4">
+              <label className="block font-medium mb-2">User Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                readOnly
+                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+              />
+            </div>
+            <div className="w-full mb-6">
+              <label className="block font-medium mb-2">User Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                readOnly
+                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+              />
+            </div>
+
           <button
             type="submit"
             className="btn btn-sm text-white bg-pink-600 hover:bg-pink-700 py-2 px-4"

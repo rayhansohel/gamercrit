@@ -9,7 +9,7 @@ function App() {
         {/* Common header */}
         <Header />
       </div>
-      <div className="min-h-[calc(100vh-404px)]">
+      <div className="min-h-[calc(100vh-435px)]">
         {/* load Content here */}
         <Outlet />
       </div>
