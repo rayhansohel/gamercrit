@@ -6,13 +6,13 @@ const SocialLinks = () => {
     <div className="min-w-full  flex rounded-box">
       {/* social icons  */}
       <div className="flex gap-4">
-        <div
+        <a
           href="https://www.facebook.com/RayhanSohel"
           target="_blank"
           className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-pink-600 hover:text-gray-700"
         >
           <FaFacebook />
-        </div>
+        </a>
         <a
           href="https://x.com/rrayhanSohel"
           target="_blank"
@@ -37,7 +37,7 @@ const SocialLinks = () => {
           <FaGithub />
         </a>
         <a
-          href="https://www.youtube.com/@gronetech"
+          href="https://www.youtube.com/@arayhansohel"
           target="_blank"
           className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-pink-600 hover:text-gray-700"
         >

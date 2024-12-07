@@ -5,7 +5,7 @@ const MyReviewsPage = () => {
     return (
         <div>
         <Helmet>
-          <title>My Reviews - Gamer Crit</title>
+          <title>My Review - Gamer Crit</title>
         </Helmet>
         <div>My Reviews Page</div>
       </div>

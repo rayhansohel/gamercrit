@@ -51,7 +51,9 @@ const HeroSlider = () => {
             />
             {/* Title and Paragraph */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center text-white p-10 w-[400px] md:w-[700px] h-[300px] bg-[#ffaade15] backdrop-blur-sm rounded-box">
-              <h2 className="text-3xl md:text-5xl font-bold mb-2 uppercase">{slide.title}</h2>
+              <h2 className="text-3xl md:text-5xl font-bold mb-2 uppercase">
+                {slide.title}
+              </h2>
               <p className="text-md">{slide.paragraph}</p>
               <Link to="/reviews">
                 <button className="btn btn-sm mt-4 bg-pink-600 hover:bg-pink-700 text-white border-none shadow-none">
@@ -69,10 +71,10 @@ const HeroSlider = () => {
           <button
             key={btnIndex}
             onClick={() => scrollToSlide(btnIndex)}
-            className={`btn btn-xs w-7 h-7 border-none ${
+            className={`btn btn-xs w-7 h-7 border-none hover:bg-pink-600 ${
               currentSlide === btnIndex
                 ? "bg-pink-600 text-white"
-                : "bg-base-200"
+                : "bg-base-200 "
             }`}
             aria-label={`Go to slide ${btnIndex + 1}`}
           >
