@@ -13,7 +13,7 @@ function App() {
         {/* load Content here */}
         <Outlet />
       </div>
-      <div className="py-4 border-t border-base-100">
+      <div className="py-4 border-t border-base-100 bg-base-100">
         {/* Copyright footer */}
         <Footer />
       </div>

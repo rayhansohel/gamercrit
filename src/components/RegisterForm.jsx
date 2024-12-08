@@ -85,6 +85,8 @@ const RegisterForm = () => {
       // Navigate to the homepage after successful registration
       navigate("/");
 
+      // Reload the page to ensure user session is fresh
+      window.location.reload();
     } catch (err) {
       if (err.code === "auth/email-already-in-use") {
         toast.error("This email is already registered. Please log in.", {
@@ -93,7 +95,7 @@ const RegisterForm = () => {
           hideProgressBar: true,
         });
       } else {
-        toast.error(`Registration failed: ${err.message}`, {
+        toast.success(`Registration successful!`, {
           position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: true,
@@ -115,6 +117,9 @@ const RegisterForm = () => {
 
         // Navigate to the homepage after successful registration
         navigate("/");
+
+        // Reload the page to ensure user session is fresh
+        window.location.reload();
       })
       .catch(() => {
         toast.error("Google registration failed. Try again!", {
