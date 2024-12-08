@@ -63,6 +63,7 @@ const UpdateReviewPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const response = await fetch(
         `https://gamercrit-server.vercel.app/reviews/${id}`,
@@ -74,16 +75,23 @@ const UpdateReviewPage = () => {
           body: JSON.stringify(formData),
         }
       );
+  
       if (response.ok) {
+        const updatedReview = await response.json();
+        console.log("Updated Review:", updatedReview);
         toast.success("Review updated successfully!");
-        navigate("/myReviews"); // Redirect to My Reviews page
+        navigate("/my-reviews");
       } else {
-        throw new Error("Failed to update review");
+        const errorData = await response.json();
+        console.error("Error details:", errorData);
+        throw new Error(errorData.error || "Failed to update review");
       }
     } catch (error) {
-      toast.error(error.message);
+      console.error("Failed to update review:", error.message);
+      toast.error(error.message || "An error occurred. Please try again.");
     }
   };
+  
 
   return (
     <div className="p-4">
