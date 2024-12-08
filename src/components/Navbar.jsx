@@ -8,7 +8,6 @@ import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { user, logOut, loading } = useContext(AuthContext);
-  console.log(user);
   if (loading) {
     return (
       <div className="navbar">

@@ -24,7 +24,7 @@ const RatingStars = ({ rating }) => {
       {Array(emptyStars)
         .fill()
         .map((_, index) => (
-          <AiOutlineStar key={`empty-${index}`} className="text-green-500" />
+          <AiOutlineStar key={`empty-${index}`} className="text-gray-500" />
         ))}
     </div>
   );

@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
@@ -115,18 +115,23 @@ const ReviewDetailPage = () => {
         <p>
           <span className="font-semibold">Email:</span> {review.email}
         </p>
-        {user && (
-          <button
-            onClick={handleAddToWatchList}
-            disabled={isAdded}
-            className={`btn btn-sm mt-4 ${isAdded ? "bg-gray-500" : "bg-pink-600 hover:bg-pink-700"} text-white`}
-          >
-            {isAdded ? "Added to WatchList" : "Add to WatchList"}
-          </button>
-        )}
-        {!user && (
-          <p className="mt-4 text-sm text-red-500">You must be logged in to add to WatchList.</p>
-        )}
+        <div className="mt-4">
+          {user ? (
+            <button
+              onClick={handleAddToWatchList}
+              disabled={isAdded}
+              className={`btn btn-sm ${
+                isAdded ? "bg-gray-500" : "bg-pink-600 hover:bg-pink-700"
+              } text-white`}
+            >
+              {isAdded ? "Added to WatchList" : "Add to WatchList"}
+            </button>
+          ) : (
+            <button className="btn btn-sm bg-base-300 text-pink-600 cursor-not-allowed">
+              You must be logged in to add to WatchList
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
