@@ -41,6 +41,7 @@ const MyReviewsPage = () => {
 
   // Delete a review
   const handleDelete = async (reviewId) => {
+    console.log("Review ID to delete:", reviewId);
     try {
       const response = await fetch(
         `https://gamercrit-server.vercel.app/reviews/${reviewId}`,
@@ -49,6 +50,7 @@ const MyReviewsPage = () => {
       if (!response.ok) {
         throw new Error("Failed to delete the review.");
       }
+
       setReviews(reviews.filter((review) => review._id !== reviewId));
       toast.success("Review deleted successfully!");
     } catch (error) {
@@ -120,40 +122,43 @@ const MyReviewsPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {reviews.map((review) => (
-                  <tr key={review._id}>
-                    <td className="p-4  border-b border-base-100">
-                      <img
-                        src={review.coverImage}
-                        alt={review.title || "N/A"}
-                        className="w-20 md:w-32 h-20 object-cover rounded-lg ml-4"
-                      />
-                    </td>
-                    <td className="px-4 py-3 font-semibold border-b border-base-100">
-                      {review.title}
-                    </td>
-                    <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">
-                      <RatingStars rating={review.rating} />
-                    </td>
-                    <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">
-                      {review.genre || "N/A"}
-                    </td>
-                    <td className="px-4 py-3 border-b border-base-100">
-                      <button
-                        onClick={() => navigate(`/update-review/${review._id}`)}
-                        className="btn btn-sm bg-pink-600 text-white hover:bg-pink-700 mb-4 sm:mb-0 w-20"
-                      >
-                        Update
-                      </button>
-                      <button
-                        onClick={() => handleDelete(review._id)}
-                        className="btn btn-sm bg-gray-600 text-white hover:bg-gray-700 ml-0 sm:ml-4 w-20"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                {reviews.map((review) => {
+                  console.log("Review ID:", review._id); // Log review._id here
+                  return (
+                    <tr key={review._id}>
+                      <td className="p-4 border-b border-base-100">
+                        <img
+                          src={review.coverImage}
+                          alt={review.title || "N/A"}
+                          className="w-20 md:w-32 h-20 object-cover rounded-lg ml-4"
+                        />
+                      </td>
+                      <td className="px-4 py-3 font-semibold border-b border-base-100">
+                        {review.title}
+                      </td>
+                      <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">
+                        <RatingStars rating={review.rating} />
+                      </td>
+                      <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">
+                        {review.genre || "N/A"}
+                      </td>
+                      <td className="px-4 py-3 border-b border-base-100">
+                        <button
+                          onClick={() => navigate(`/update-review/${review._id}`)}
+                          className="btn btn-sm bg-pink-600 text-white hover:bg-pink-700 mb-4 sm:mb-0 w-20"
+                        >
+                          Update
+                        </button>
+                        <button
+                          onClick={() => handleDelete(review._id)}
+                          className="btn btn-sm bg-gray-600 text-white hover:bg-gray-700 ml-0 sm:ml-4 w-20"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
