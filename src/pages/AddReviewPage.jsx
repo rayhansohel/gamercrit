@@ -65,14 +65,14 @@ const AddReviewPage = () => {
       <Helmet>
         <title>Add Review - Gamer Crit</title>
       </Helmet>
-      <div className="max-w-xl mx-auto my-6 md:my-12 bg-base-200 border border-base-100 rounded-box p-8">
-        <h1 className="text-2xl mb-6 text-center">Add a New Review</h1>
 
-        {loading ? (
-          <div className="flex justify-center mb-4">
-            <Lottie animationData={loadingAnimation} className="w-32" />
-          </div>
-        ) : (
+      {loading ? (
+        <div className="flex justify-center mb-4">
+          <Lottie animationData={loadingAnimation} className="w-32" />
+        </div>
+      ) : (
+        <div className="max-w-xl mx-auto my-6 md:my-12 bg-base-200 border border-base-100 rounded-box p-8">
+          <h1 className="text-2xl mb-6 text-center">Add a New Review</h1>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <input
@@ -176,8 +176,8 @@ const AddReviewPage = () => {
               Submit Review
             </button>
           </form>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
