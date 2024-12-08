@@ -54,7 +54,10 @@ const MenuItems = ({ closeDropdown }) => {
       {/* Conditionally render private links */}
       <NavLink
         to="/add-review"
-        onClick={(e) => handlePrivateLinkClick(e, "/add-review")}
+        onClick={(e) => {
+          handlePrivateLinkClick(e, "/add-review");
+          closeDropdown();
+        }}
         className={({ isActive }) =>
           `btn btn-sm w-full bg-base-100 shadow-none ${
             isActive ? "text-pink-600" : "hover:text-pink-600 transition"
@@ -66,7 +69,10 @@ const MenuItems = ({ closeDropdown }) => {
 
       <NavLink
         to="/my-reviews"
-        onClick={(e) => handlePrivateLinkClick(e, "/my-reviews")}
+        onClick={(e) => {
+          handlePrivateLinkClick(e, "/my-reviews");
+          closeDropdown();
+        }}
         className={({ isActive }) =>
           `btn btn-sm w-full bg-base-100 shadow-none ${
             isActive ? "text-pink-600" : "hover:text-pink-600 transition"
@@ -78,7 +84,10 @@ const MenuItems = ({ closeDropdown }) => {
 
       <NavLink
         to="/watchlist"
-        onClick={(e) => handlePrivateLinkClick(e, "/watch-list")}
+        onClick={(e) => {
+          handlePrivateLinkClick(e, "/watch-list");
+          closeDropdown();
+        }}
         className={({ isActive }) =>
           `btn btn-sm w-full bg-base-100 shadow-none ${
             isActive ? "text-pink-600" : "hover:text-pink-600 transition"

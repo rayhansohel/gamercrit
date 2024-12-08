@@ -5,14 +5,15 @@ import { AuthContext } from "../contexts/AuthContext";
 import MenuItems from "./MenuItems";
 import BrandLogo from "../assets/gamercrit_logo.png";
 import { Tooltip } from "react-tooltip";
+import Lottie from "lottie-react";
+import loadingAnimation from "../assets/loading.json";
 
 const Navbar = () => {
   const { user, logOut, loading } = useContext(AuthContext);
   if (loading) {
     return (
       <div className="navbar">
-        {/* You can add a loading spinner or a placeholder */}
-        <span>Loading...</span>
+        <Lottie animationData={loadingAnimation} className="w-32" />
       </div>
     );
   }
@@ -29,6 +30,7 @@ const Navbar = () => {
             </div>
           </Link>
         </div>
+        
 
         {/* Menu Items */}
         <div className="navbar-center hidden lg:grid grid-flow-col-dense gap-2">

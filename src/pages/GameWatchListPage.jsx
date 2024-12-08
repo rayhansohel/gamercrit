@@ -5,11 +5,14 @@ import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import Lottie from "lottie-react";
+import loadingAnimation from "../assets/loading.json";
 
 const GameWatchListPage = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [watchlist, setWatchlist] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
   // Fetch Watchlist data for the logged-in user
@@ -21,6 +24,7 @@ const GameWatchListPage = () => {
     }
 
     const fetchWatchlist = async () => {
+      setLoading(true); // Start loader
       try {
         const response = await fetch(
           `https://gamercrit-server.vercel.app/watchlist?email=${user.email}`
@@ -33,29 +37,13 @@ const GameWatchListPage = () => {
       } catch (error) {
         console.error("Failed to fetch watchlist data", error);
         setErrorMessage("Failed to fetch watchlist. Please try again.");
+      } finally {
+        setLoading(false); // Stop loader
       }
     };
 
     fetchWatchlist();
   }, [user, navigate]);
-
-  // Remove a game from the watchlist
-  const handleRemove = async (reviewId) => {
-    try {
-      const response = await fetch(
-        `https://gamercrit-server.vercel.app/watchlist/${reviewId}`,
-        { method: "DELETE" }
-      );
-      if (!response.ok) {
-        throw new Error("Failed to remove the game from watchlist.");
-      }
-      setWatchlist(watchlist.filter((item) => item.reviewId !== reviewId));
-      toast.success("Game removed from your watchlist.");
-    } catch (error) {
-      console.error("Failed to remove game from watchlist", error);
-      toast.error("Failed to remove game. Please try again.");
-    }
-  };
 
   // Render star ratings
   const RatingStars = ({ rating }) => {
@@ -87,9 +75,13 @@ const GameWatchListPage = () => {
       </Helmet>
 
       <div className="w-11/12 mx-auto my-6 md:my-12">
-        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-
-        {watchlist.length === 0 ? (
+        {loading ? (
+          <div className="flex justify-center items-center h-screen w-screen">
+            <Lottie animationData={loadingAnimation} className="w-32" />
+          </div>
+        ) : errorMessage ? (
+          <p className="text-red-500">{errorMessage}</p>
+        ) : watchlist.length === 0 ? (
           <p className="text-gray-600">
             No games added to your watchlist yet. Start exploring reviews!
           </p>
@@ -135,7 +127,7 @@ const GameWatchListPage = () => {
                       {item.year || "N/A"}
                     </td>
                     <td className="px-4 py-3 border-b border-base-100">
-                        <RatingStars rating={item.rating} />
+                      <RatingStars rating={item.rating} />
                     </td>
                   </tr>
                 ))}
@@ -149,3 +141,4 @@ const GameWatchListPage = () => {
 };
 
 export default GameWatchListPage;
+

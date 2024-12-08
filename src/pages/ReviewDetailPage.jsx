@@ -5,6 +5,8 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../contexts/AuthContext"; // Custom hook for authentication context
+import Lottie from "lottie-react";
+import loadingAnimation from "../assets/loading.json"; // Import loading animation
 
 const RatingStars = ({ rating }) => {
   const fullStars = Math.floor(rating);
@@ -97,15 +99,21 @@ const ReviewDetailPage = () => {
     }
   };
 
-  // If no review is found, show a loading or error message
-  if (!review) return <p>Loading...</p>;
+  // If no review is found, show a loading animation
+  if (!review) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Lottie animationData={loadingAnimation} className="w-32" />
+      </div>
+    );
+  }
 
   return (
     <div className="w-11/12 mx-auto my-6 md:my-12 flex justify-center items-center">
       <Helmet>
         <title>{review?.title} - Gamer Crit</title>
       </Helmet>
-      <ToastContainer position="bottom-right"/>
+      <ToastContainer position="bottom-right" />
       <div className="bg-base-200 border border-base-100 rounded-box p-6 max-w-4xl">
         <img
           src={review?.coverImage}
@@ -153,3 +161,4 @@ const ReviewDetailPage = () => {
 };
 
 export default ReviewDetailPage;
+

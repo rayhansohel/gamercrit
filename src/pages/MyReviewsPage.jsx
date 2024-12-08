@@ -5,12 +5,15 @@ import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import Lottie from "lottie-react";
+import loadingAnimation from "../assets/loading.json";
 
 const MyReviewsPage = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [reviews, setReviews] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(true); // Loader state
 
   // Fetch reviews data for the logged-in user
   useEffect(() => {
@@ -33,6 +36,8 @@ const MyReviewsPage = () => {
       } catch (error) {
         console.error("Failed to fetch reviews", error);
         setErrorMessage("Failed to fetch reviews. Please try again.");
+      } finally {
+        setIsLoading(false); // Stop the loader
       }
     };
 
@@ -95,9 +100,13 @@ const MyReviewsPage = () => {
       </Helmet>
 
       <div className="w-11/12 mx-auto my-6 md:my-12">
-        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-
-        {reviews.length === 0 ? (
+        {isLoading ? (
+          <div className="flex justify-center items-center min-h-screen">
+            <Lottie animationData={loadingAnimation} className="w-32" />
+          </div>
+        ) : errorMessage ? (
+          <p className="text-red-500">{errorMessage}</p>
+        ) : reviews.length === 0 ? (
           <p className="text-gray-600">No reviews found.</p>
         ) : (
           <div className="overflow-x-auto">
@@ -122,43 +131,42 @@ const MyReviewsPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {reviews.map((review) => {
-                  console.log("Review ID:", review._id); // Log review._id here
-                  return (
-                    <tr key={review._id}>
-                      <td className="p-4 border-b border-base-100">
-                        <img
-                          src={review.coverImage}
-                          alt={review.title || "N/A"}
-                          className="w-20 md:w-32 h-20 object-cover rounded-lg ml-4"
-                        />
-                      </td>
-                      <td className="px-4 py-3 font-semibold border-b border-base-100">
-                        {review.title}
-                      </td>
-                      <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">
-                        <RatingStars rating={review.rating} />
-                      </td>
-                      <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">
-                        {review.genre || "N/A"}
-                      </td>
-                      <td className="px-4 py-3 border-b border-base-100">
-                        <button
-                          onClick={() => navigate(`/update-review/${review._id}`)}
-                          className="btn btn-sm bg-pink-600 text-white hover:bg-pink-700 mb-4 sm:mb-0 w-20"
-                        >
-                          Update
-                        </button>
-                        <button
-                          onClick={() => handleDelete(review._id)}
-                          className="btn btn-sm bg-gray-600 text-white hover:bg-gray-700 ml-0 sm:ml-4 w-20"
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
+                {reviews.map((review) => (
+                  <tr key={review._id}>
+                    <td className="p-4 border-b border-base-100">
+                      <img
+                        src={review.coverImage}
+                        alt={review.title || "N/A"}
+                        className="w-20 md:w-32 h-20 object-cover rounded-lg ml-4"
+                      />
+                    </td>
+                    <td className="px-4 py-3 font-semibold border-b border-base-100">
+                      {review.title}
+                    </td>
+                    <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">
+                      <RatingStars rating={review.rating} />
+                    </td>
+                    <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">
+                      {review.genre || "N/A"}
+                    </td>
+                    <td className="px-4 py-3 border-b border-base-100">
+                      <button
+                        onClick={() =>
+                          navigate(`/update-review/${review._id}`)
+                        }
+                        className="btn btn-sm bg-pink-600 text-white hover:bg-pink-700 mb-4 sm:mb-0 w-20"
+                      >
+                        Update
+                      </button>
+                      <button
+                        onClick={() => handleDelete(review._id)}
+                        className="btn btn-sm bg-gray-600 text-white hover:bg-gray-700 ml-0 sm:ml-4 w-20"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

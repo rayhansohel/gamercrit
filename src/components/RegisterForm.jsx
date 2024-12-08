@@ -82,8 +82,9 @@ const RegisterForm = () => {
         hideProgressBar: true,
       });
 
-      // Redirect to home
+      // Navigate to the homepage after successful registration
       navigate("/");
+
     } catch (err) {
       if (err.code === "auth/email-already-in-use") {
         toast.error("This email is already registered. Please log in.", {
@@ -111,6 +112,8 @@ const RegisterForm = () => {
           position: "bottom-right",
           hideProgressBar: true,
         });
+
+        // Navigate to the homepage after successful registration
         navigate("/");
       })
       .catch(() => {

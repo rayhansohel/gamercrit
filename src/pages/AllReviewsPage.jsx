@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import Lottie from "lottie-react";
+import loadingAnimation from "../assets/loading.json";
 
 const RatingStars = ({ rating }) => {
   const fullStars = Math.floor(rating);
@@ -36,6 +38,7 @@ const AllReviewsPage = () => {
   const [genres, setGenres] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
+  const [loading, setLoading] = useState(true); // Loading state
 
   // Fetch reviews from the API
   useEffect(() => {
@@ -51,8 +54,11 @@ const AllReviewsPage = () => {
         // Extract unique genres
         const uniqueGenres = [...new Set(data.map((review) => review.genre))];
         setGenres(uniqueGenres);
+
+        setLoading(false); // Stop loader
       } catch (error) {
         console.error("Failed to fetch reviews", error);
+        setLoading(false); // Stop loader even on error
       }
     };
 
@@ -93,81 +99,91 @@ const AllReviewsPage = () => {
         <title>Reviews - Gamer Crit</title>
       </Helmet>
       <div className="w-11/12 mx-auto my-6 md:my-12">
-        {/* Filter and Sort Dropdowns */}
-        <div className="flex justify-between items-center mb-6 gap-4">
-          {/* Filter by Genre */}
-          <select
-            className="select select-sm select-bordered border-base-100 bg-base-200 w-full max-w-xs"
-            value={selectedGenre}
-            onChange={(e) => handleFilter(e.target.value)}
-          >
-            <option value="All">All Genres</option>
-            {genres.map((genre) => (
-              <option key={genre} value={genre}>
-                {genre}
-              </option>
-            ))}
-          </select>
-
-          {/* Sort by Criteria */}
-          <select
-            className="select select-sm select-bordered border-base-100 bg-base-200 w-full max-w-xs"
-            value={sortCriteria}
-            onChange={(e) => handleSort(e.target.value)}
-          >
-            <option value="">Sort By</option>
-            <option value="Rating">Rating</option>
-            <option value="Year">Year</option>
-          </select>
-        </div>
-
-        {/* Reviews Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6">
-          {filteredReviews.length > 0 ? (
-            filteredReviews.map((review) => (
-              <div
-                key={review._id}
-                className="bg-base-200 border border-base-100 rounded-box p-4"
+        {loading ? (
+          // Loader modal
+          <div className="flex justify-center items-center h-[calc(100vh-200px)]">
+            <Lottie animationData={loadingAnimation} className="w-32" />
+          </div>
+        ) : (
+          <>
+            {/* Filter and Sort Dropdowns */}
+            <div className="flex justify-between items-center mb-6 gap-4">
+              {/* Filter by Genre */}
+              <select
+                className="select select-sm select-bordered border-base-100 bg-base-200 w-full max-w-xs"
+                value={selectedGenre}
+                onChange={(e) => handleFilter(e.target.value)}
               >
-                <img
-                  src={review.coverImage}
-                  alt={review.title}
-                  className="w-full max-h-48 min-h-32 object-cover rounded-lg mb-2"
-                />
-                <h3 className="text-xl font-semibold mb-2">{review.title}</h3>
-                <p>
-                  <span className="font-semibold">Published:</span>{" "}
-                  {review.year}
-                </p>
-                <p>
-                  <span className="font-semibold">Genre:</span> {review.genre}
-                </p>
-                <p className="flex items-center gap-2">
-                  <span className="font-semibold">Ratings:</span>{" "}
-                  <span>
-                    <RatingStars rating={review.rating} />
-                  </span>
-                </p>
-                <p>
-                  <span className="font-semibold">Review by:</span>{" "}
-                  {review.name}
-                </p>
+                <option value="All">All Genres</option>
+                {genres.map((genre) => (
+                  <option key={genre} value={genre}>
+                    {genre}
+                  </option>
+                ))}
+              </select>
 
-                <Link
-                  to={`/review/${review._id}`}
-                  className="btn btn-sm bg-pink-600 text-white hover:bg-pink-700 mt-4"
-                >
-                  Explore Details
-                </Link>
-              </div>
-            ))
-          ) : (
-            <p>No reviews found.</p>
-          )}
-        </div>
+              {/* Sort by Criteria */}
+              <select
+                className="select select-sm select-bordered border-base-100 bg-base-200 w-full max-w-xs"
+                value={sortCriteria}
+                onChange={(e) => handleSort(e.target.value)}
+              >
+                <option value="">Sort By</option>
+                <option value="Rating">Rating</option>
+                <option value="Year">Year</option>
+              </select>
+            </div>
+
+            {/* Reviews Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6">
+              {filteredReviews.length > 0 ? (
+                filteredReviews.map((review) => (
+                  <div
+                    key={review._id}
+                    className="bg-base-200 border border-base-100 rounded-box p-4"
+                  >
+                    <img
+                      src={review.coverImage}
+                      alt={review.title}
+                      className="w-full max-h-48 min-h-32 object-cover rounded-lg mb-2"
+                    />
+                    <h3 className="text-xl font-semibold mb-2">{review.title}</h3>
+                    <p>
+                      <span className="font-semibold">Published:</span>{" "}
+                      {review.year}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Genre:</span> {review.genre}
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <span className="font-semibold">Ratings:</span>{" "}
+                      <span>
+                        <RatingStars rating={review.rating} />
+                      </span>
+                    </p>
+                    <p>
+                      <span className="font-semibold">Review by:</span>{" "}
+                      {review.name}
+                    </p>
+
+                    <Link
+                      to={`/review/${review._id}`}
+                      className="btn btn-sm bg-pink-600 text-white hover:bg-pink-700 mt-4"
+                    >
+                      Explore Details
+                    </Link>
+                  </div>
+                ))
+              ) : (
+                <p>No reviews found.</p>
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
 };
 
 export default AllReviewsPage;
+
