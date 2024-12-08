@@ -15,7 +15,7 @@ const NeedLoginModal = ({ isOpen, onClose, onRedirect }) => {
         className="bg-base-200 p-6 rounded-box max-w-sm w-full flex flex-col justify-center items-center"
         onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
       >
-        <h2 className="text-xl text-center font-semibold ">Please Log In</h2>
+        <h2 className="text-xl text-center font-semibold ">Please Login</h2>
         <Lottie animationData={loginAnimation} className="w-32" />
         <p className="mt-2 text-sm text-center">
           You need to log in to access this page.

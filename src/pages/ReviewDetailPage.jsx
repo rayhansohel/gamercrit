@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext"; // Custom hook for authentication context
 
 const RatingStars = ({ rating }) => {
   const fullStars = Math.floor(rating);
@@ -30,10 +30,11 @@ const RatingStars = ({ rating }) => {
 
 const ReviewDetailPage = () => {
   const { id } = useParams();
-  const { user } = useAuth();
+  const { user } = useAuth(); // Access user from context
   const [review, setReview] = useState(null);
   const [isAdded, setIsAdded] = useState(false);
 
+  // Fetch review details by ID
   useEffect(() => {
     const fetchReview = async () => {
       try {
@@ -54,6 +55,7 @@ const ReviewDetailPage = () => {
     fetchReview();
   }, [id]);
 
+  // Handle adding game to watchlist
   const handleAddToWatchList = async () => {
     if (!user) {
       toast.error("You must be logged in to add to WatchList.");
@@ -95,6 +97,7 @@ const ReviewDetailPage = () => {
     }
   };
 
+  // If no review is found, show a loading or error message
   if (!review) return <p>Loading...</p>;
 
   return (
@@ -102,7 +105,7 @@ const ReviewDetailPage = () => {
       <Helmet>
         <title>{review?.title} - Gamer Crit</title>
       </Helmet>
-      <ToastContainer/>
+      <ToastContainer position="bottom-right"/>
       <div className="bg-base-200 border border-base-100 rounded-box p-6 max-w-4xl">
         <img
           src={review?.coverImage}

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Helmet } from "react-helmet-async";
 import { useState, useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
