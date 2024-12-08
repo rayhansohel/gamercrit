@@ -43,7 +43,7 @@ const Routes = createBrowserRouter([
         ),
       },
       {
-        path: "/reviews/:id",
+        path: "/review/:id",
         element: <ReviewDetailPage />,
       },
       {

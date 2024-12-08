@@ -94,7 +94,7 @@ const AllReviewsPage = () => {
       </Helmet>
       <div className="w-11/12 mx-auto my-6 md:my-12">
         {/* Filter and Sort Dropdowns */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center mb-6 gap-4">
           {/* Filter by Genre */}
           <select
             className="select select-sm select-bordered border-base-100 bg-base-200 w-full max-w-xs"
@@ -122,7 +122,7 @@ const AllReviewsPage = () => {
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6">
           {filteredReviews.length > 0 ? (
             filteredReviews.map((review) => (
               <div
@@ -132,7 +132,7 @@ const AllReviewsPage = () => {
                 <img
                   src={review.coverImage}
                   alt={review.title}
-                  className="w-full h-48 object-cover rounded-lg mb-2"
+                  className="w-full max-h-48 min-h-32 object-cover rounded-lg mb-2"
                 />
                 <h3 className="text-xl font-semibold mb-2">{review.title}</h3>
                 <p>
@@ -154,7 +154,7 @@ const AllReviewsPage = () => {
                 </p>
 
                 <Link
-                  to={`/reviews/${review._id}`}
+                  to={`/review/${review._id}`}
                   className="btn btn-sm bg-pink-600 text-white hover:bg-pink-700 mt-4"
                 >
                   Explore Details
