@@ -140,7 +140,7 @@ const MyReviewsPage = () => {
                     </td>
                     <td className="px-4 py-3 border-b border-base-100">
                       <button
-                        onClick={() => navigate(`/updateReview/${review._id}`)}
+                        onClick={() => navigate(`/update-review/${review._id}`)}
                         className="btn btn-sm bg-pink-600 text-white hover:bg-pink-700 mb-4 sm:mb-0 w-20"
                       >
                         Update
