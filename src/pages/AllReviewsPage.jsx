@@ -5,7 +5,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const RatingStars = ({ rating }) => {
   const fullStars = Math.floor(rating);
-  const halfStars = rating % 1 !== 0; 
+  const halfStars = rating % 1 !== 0;
   const emptyStars = 5 - Math.ceil(rating);
 
   return (
@@ -32,14 +32,25 @@ const RatingStars = ({ rating }) => {
 
 const AllReviewsPage = () => {
   const [reviews, setReviews] = useState([]);
+  const [filteredReviews, setFilteredReviews] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [sortCriteria, setSortCriteria] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
 
   // Fetch reviews from the API
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await fetch("http://localhost:4000/reviews");
+        const response = await fetch(
+          "https://gamercrit-server.vercel.app/reviews"
+        );
         const data = await response.json();
         setReviews(data);
+        setFilteredReviews(data);
+
+        // Extract unique genres
+        const uniqueGenres = [...new Set(data.map((review) => review.genre))];
+        setGenres(uniqueGenres);
       } catch (error) {
         console.error("Failed to fetch reviews", error);
       }
@@ -48,15 +59,72 @@ const AllReviewsPage = () => {
     fetchReviews();
   }, []);
 
+  // Handle sorting
+  const handleSort = (criteria) => {
+    setSortCriteria(criteria);
+
+    const sortedReviews = [...filteredReviews].sort((a, b) => {
+      if (criteria === "Rating") {
+        return b.rating - a.rating; // Sort by descending rating
+      } else if (criteria === "Year") {
+        return b.year - a.year; // Sort by descending year
+      }
+      return 0;
+    });
+
+    setFilteredReviews(sortedReviews);
+  };
+
+  // Handle filtering
+  const handleFilter = (genre) => {
+    setSelectedGenre(genre);
+
+    if (genre === "All") {
+      setFilteredReviews(reviews); // Show all reviews
+    } else {
+      const filtered = reviews.filter((review) => review.genre === genre);
+      setFilteredReviews(filtered);
+    }
+  };
+
   return (
     <div>
       <Helmet>
         <title>Reviews - Gamer Crit</title>
       </Helmet>
       <div className="w-11/12 mx-auto my-6 md:my-12">
+        {/* Filter and Sort Dropdowns */}
+        <div className="flex justify-between items-center mb-6">
+          {/* Filter by Genre */}
+          <select
+            className="select select-sm select-bordered border-base-100 bg-base-200 w-full max-w-xs"
+            value={selectedGenre}
+            onChange={(e) => handleFilter(e.target.value)}
+          >
+            <option value="All">All Genres</option>
+            {genres.map((genre) => (
+              <option key={genre} value={genre}>
+                {genre}
+              </option>
+            ))}
+          </select>
+
+          {/* Sort by Criteria */}
+          <select
+            className="select select-sm select-bordered border-base-100 bg-base-200 w-full max-w-xs"
+            value={sortCriteria}
+            onChange={(e) => handleSort(e.target.value)}
+          >
+            <option value="">Sort By</option>
+            <option value="Rating">Rating</option>
+            <option value="Year">Year</option>
+          </select>
+        </div>
+
+        {/* Reviews Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {reviews.length > 0 ? (
-            reviews.map((review) => (
+          {filteredReviews.length > 0 ? (
+            filteredReviews.map((review) => (
               <div
                 key={review._id}
                 className="bg-base-200 border border-base-100 rounded-box p-4"
@@ -67,10 +135,23 @@ const AllReviewsPage = () => {
                   className="w-full h-48 object-cover rounded-lg mb-2"
                 />
                 <h3 className="text-xl font-semibold mb-2">{review.title}</h3>
-                <p><span className="font-semibold">Published:</span> {review.year}</p>
-                <p><span className="font-semibold">Genre:</span> {review.genre}</p>
-                <p className="flex items-center gap-2"><span className="font-semibold">Ratings:</span> <span><RatingStars rating={review.rating} /></span></p>
-                <p><span className="font-semibold">Review by:</span> {review.name}</p>
+                <p>
+                  <span className="font-semibold">Published:</span>{" "}
+                  {review.year}
+                </p>
+                <p>
+                  <span className="font-semibold">Genre:</span> {review.genre}
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="font-semibold">Ratings:</span>{" "}
+                  <span>
+                    <RatingStars rating={review.rating} />
+                  </span>
+                </p>
+                <p>
+                  <span className="font-semibold">Review by:</span>{" "}
+                  {review.name}
+                </p>
 
                 <Link
                   to={`/reviews/${review._id}`}
