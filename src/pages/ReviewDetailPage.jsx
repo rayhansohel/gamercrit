@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../contexts/AuthContext"; // Custom hook for authentication context
 
 const RatingStars = ({ rating }) => {
@@ -30,27 +32,33 @@ const ReviewDetailPage = () => {
   const { id } = useParams();
   const { user } = useAuth(); // Access user from context
   const [review, setReview] = useState(null);
-  const [isAdded, setIsAdded] = useState(false); // State to track if added to watchlist
+  const [isAdded, setIsAdded] = useState(false);
 
+  // Fetch review details by ID
   useEffect(() => {
     const fetchReview = async () => {
       try {
         const response = await fetch(
           `https://gamercrit-server.vercel.app/reviews/${id}`
         );
+        if (!response.ok) {
+          throw new Error("Failed to fetch review details");
+        }
         const data = await response.json();
         setReview(data);
       } catch (error) {
-        console.error("Failed to fetch review details", error);
+        console.error("Error fetching review:", error);
+        toast.error("Failed to fetch review details. Please try again.");
       }
     };
 
     fetchReview();
   }, [id]);
 
+  // Handle adding game to watchlist
   const handleAddToWatchList = async () => {
     if (!user) {
-      alert("You must be logged in to add to WatchList.");
+      toast.error("You must be logged in to add to WatchList.");
       return;
     }
 
@@ -58,8 +66,11 @@ const ReviewDetailPage = () => {
       reviewId: id,
       title: review.title,
       coverImage: review.coverImage,
+      year: review.year,
+      rating: review.rating,
+      genre: review.genre,
       email: user.email,
-      username: user.displayName || user.username, // Ensure it uses displayName or username
+      username: user.displayName || user.name,
     };
 
     try {
@@ -76,44 +87,48 @@ const ReviewDetailPage = () => {
 
       if (response.ok) {
         setIsAdded(true);
+        toast.success("Successfully added to WatchList!");
       } else {
-        console.error("Failed to add to WatchList");
+        throw new Error("Failed to add to WatchList");
       }
     } catch (error) {
       console.error("Error adding to WatchList:", error);
+      toast.error("Failed to add to WatchList. Please try again.");
     }
   };
 
+  // If no review is found, show a loading or error message
   if (!review) return <p>Loading...</p>;
 
   return (
     <div className="w-11/12 mx-auto my-6 md:my-12 flex justify-center items-center">
       <Helmet>
-        <title>{review.title} - Gamer Crit</title>
+        <title>{review?.title} - Gamer Crit</title>
       </Helmet>
+      <ToastContainer position="top-right" theme="dark" />
       <div className="bg-base-200 border border-base-100 rounded-box p-6 max-w-4xl">
         <img
-          src={review.coverImage}
-          alt={review.title}
+          src={review?.coverImage}
+          alt={review?.title}
           className="w-full max-h-[400px] object-cover rounded-lg mb-4"
         />
-        <h1 className="text-2xl font-bold mb-4">{review.title}</h1>
+        <h1 className="text-2xl font-bold mb-4">{review?.title}</h1>
         <p>
-          <span className="font-semibold">Published:</span> {review.year}
+          <span className="font-semibold">Published:</span> {review?.year}
         </p>
         <p>
-          <span className="font-semibold">Genre:</span> {review.genre}
+          <span className="font-semibold">Genre:</span> {review?.genre}
         </p>
         <p className="flex items-center gap-2">
           <span className="font-semibold">Ratings:</span>
-          <RatingStars rating={review.rating} />
+          <RatingStars rating={review?.rating} />
         </p>
-        <p className="my-4">{review.description}</p>
+        <p className="my-4">{review?.description}</p>
         <p>
-          <span className="font-semibold">Reviewed by:</span> {review.name}
+          <span className="font-semibold">Reviewed by:</span> {review?.name}
         </p>
         <p>
-          <span className="font-semibold">Email:</span> {review.email}
+          <span className="font-semibold">Email:</span> {review?.email}
         </p>
         <div className="mt-4">
           {user ? (

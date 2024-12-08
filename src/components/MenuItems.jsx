@@ -77,7 +77,7 @@ const MenuItems = ({ closeDropdown }) => {
       </NavLink>
 
       <NavLink
-        to="/watch-list"
+        to="/watchlist"
         onClick={(e) => handlePrivateLinkClick(e, "/watch-list")}
         className={({ isActive }) =>
           `btn btn-sm w-full bg-base-100 shadow-none ${
