@@ -125,7 +125,7 @@ const GameWatchListPage = () => {
                         className="w-20 md:w-32 h-20 object-cover rounded-lg"
                       />
                     </td>
-                    <td className="px-4 py-3 border-b border-base-100">
+                    <td className="px-4 py-3 font-semibold border-b border-base-100">
                       {item.title || "N/A"}
                     </td>
                     <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">

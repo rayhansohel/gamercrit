@@ -18,5 +18,5 @@
 - React Toastify for notifications
 
 ## Live Site URL
-[Live Site Link](gamercrit.netlify.app)
+[Gamer Crit](https://gamercrit.netlify.app/)
 
