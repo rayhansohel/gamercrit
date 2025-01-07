@@ -77,10 +77,10 @@ const MyReviewsPage = () => {
           .map((_, index) => (
             <AiFillStar
               key={`full-${index}`}
-              className="text-green-500 text-lg"
+              className="text-accent text-lg"
             />
           ))}
-        {halfStars && <AiFillStar className="text-green-500 text-lg" />}
+        {halfStars && <AiFillStar className="text-accent text-lg" />}
         {Array(emptyStars)
           .fill()
           .map((_, index) => (
@@ -110,22 +110,22 @@ const MyReviewsPage = () => {
           <p className="text-gray-600">No reviews found.</p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="table-auto w-full max-w-4xl mx-auto bg-base-200 rounded-box overflow-hidden border-base-100">
+            <table className="table-auto w-full max-w-4xl mx-auto bg-base-200 rounded-box overflow-hidden border-base-300">
               <thead className="bg-base-100">
                 <tr>
-                  <th className="px-8 py-3 border-b border-base-100 text-left">
+                  <th className="px-8 py-3 text-left">
                     Cover Image
                   </th>
-                  <th className="px-4 py-3 border-b border-base-100 text-left">
+                  <th className="px-4 py-3 text-left">
                     Title
                   </th>
-                  <th className="px-4 py-3 border-b border-base-100 text-left hidden md:table-cell">
+                  <th className="px-4 py-3 text-left hidden md:table-cell">
                     Rating
                   </th>
-                  <th className="px-4 py-3 border-b border-base-100 text-left hidden md:table-cell">
+                  <th className="px-4 py-3 text-left hidden md:table-cell">
                     Genre
                   </th>
-                  <th className="px-4 py-3 border-b border-base-100 text-left">
+                  <th className="px-4 py-3 text-left">
                     Actions
                   </th>
                 </tr>
@@ -133,23 +133,23 @@ const MyReviewsPage = () => {
               <tbody>
                 {reviews.map((review) => (
                   <tr key={review._id}>
-                    <td className="p-4 border-b border-base-100">
+                    <td className="p-4 border-t border-base-300">
                       <img
                         src={review.coverImage}
                         alt={review.title || "N/A"}
                         className="w-20 md:w-32 h-20 object-cover rounded-lg ml-4"
                       />
                     </td>
-                    <td className="px-4 py-3 font-semibold border-b border-base-100">
+                    <td className="px-4 py-3 font-semibold border-t border-base-300">
                       {review.title}
                     </td>
-                    <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">
+                    <td className="px-4 py-3 border-t border-base-300 hidden md:table-cell">
                       <RatingStars rating={review.rating} />
                     </td>
-                    <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">
+                    <td className="px-4 py-3 border-t border-base-300 hidden md:table-cell">
                       {review.genre || "N/A"}
                     </td>
-                    <td className="px-4 py-3 border-b border-base-100">
+                    <td className="px-4 py-3 border-t border-base-300">
                       <button
                         onClick={() => navigate(`/update-review/${review._id}`)}
                         className="btn btn-sm btn-accent text-white  mb-4 sm:mb-0 w-20"

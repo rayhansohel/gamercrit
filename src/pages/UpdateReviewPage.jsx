@@ -112,7 +112,7 @@ const UpdateReviewPage = () => {
             <Lottie animationData={loadingAnimation} className="w-32" />
           </div>
         ) : (
-          <div className="max-w-2xl mx-auto my-6 md:my-12 bg-base-200 border border-base-100 rounded-box p-8">
+          <div className="max-w-2xl mx-auto my-6 md:my-12 bg-base-200 rounded-box p-8">
             {errorMessage && <p className="text-red-500">{errorMessage}</p>}
 
             <h1 className="text-2xl mb-6 text-center">Update Review</h1>
@@ -124,7 +124,7 @@ const UpdateReviewPage = () => {
                   name="title"
                   value={formData.title}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                  className="w-full px-4 py-2 bg-base-300 rounded-md focus:outline-none border-none"
                   placeholder="Enter game title"
                   required
                 />
@@ -138,7 +138,7 @@ const UpdateReviewPage = () => {
                   name="coverImage"
                   value={formData.coverImage}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                  className="w-full px-4 py-2 bg-base-300 rounded-md focus:outline-none border-none"
                   placeholder="Enter image URL"
                   required
                 />
@@ -149,7 +149,7 @@ const UpdateReviewPage = () => {
                   name="description"
                   value={formData.description}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                  className="w-full px-4 py-2 bg-base-300 rounded-md focus:outline-none border-none"
                   rows="8"
                   placeholder="Write your review"
                   required
@@ -163,7 +163,7 @@ const UpdateReviewPage = () => {
                     name="rating"
                     value={formData.rating}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                    className="w-full px-4 py-2 bg-base-300 rounded-md focus:outline-none border-none"
                     placeholder="Rate out of 5"
                     min="1"
                     max="5"
@@ -177,7 +177,7 @@ const UpdateReviewPage = () => {
                     name="year"
                     value={formData.year}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                    className="w-full px-4 py-2 bg-base-300 rounded-md focus:outline-none border-none"
                     placeholder="Published year"
                     required
                   />
@@ -189,7 +189,7 @@ const UpdateReviewPage = () => {
                   name="genre"
                   value={formData.genre}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                  className="w-full px-4 py-2 bg-base-300 rounded-md focus:outline-none border-none"
                   required
                 >
                   <option value="">Select a Genre</option>
@@ -206,7 +206,7 @@ const UpdateReviewPage = () => {
                   name="name"
                   value={formData.name}
                   readOnly
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                  className="w-full px-4 py-2 bg-base-300 rounded-md focus:outline-none border-none"
                 />
               </div>
               <div className="w-full mb-6">
@@ -216,7 +216,7 @@ const UpdateReviewPage = () => {
                   name="email"
                   value={formData.email}
                   readOnly
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                  className="w-full px-4 py-2 bg-base-300 rounded-md focus:outline-none border-none"
                 />
               </div>
 
