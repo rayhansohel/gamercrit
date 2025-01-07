@@ -27,7 +27,7 @@ const RatingStars = ({ rating }) => {
 const ImageSlider = () => {
   const [slides, setSlides] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(1);
-  const slideInterval = 3000;
+  const slideInterval = 5000;
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {

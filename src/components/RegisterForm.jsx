@@ -131,7 +131,7 @@ const RegisterForm = () => {
 
   return (
     <div>
-      <div className="card min-w-[400px] bg-base-200 border border-base-100 rounded-box flex flex-col items-center justify-center pt-8">
+      <div className="card min-w-[400px] bg-base-300 rounded-box flex flex-col items-center justify-center">
         <div className="mt-10">
           <button
             onClick={handleGoogleRegister}
@@ -151,7 +151,7 @@ const RegisterForm = () => {
               type="text"
               name="displayName"
               placeholder="Enter your name"
-              className="input input-sm input-bordered text-xs font-semibold focus:outline-none border-none bg-base-300"
+              className="input input-sm input-bordered text-xs font-semibold focus:outline-none border-none bg-base-200"
               required
             />
           </div>
@@ -160,7 +160,7 @@ const RegisterForm = () => {
               type="email"
               name="email"
               placeholder="Enter your email address"
-              className="input input-sm input-bordered text-xs font-semibold focus:outline-none border-none bg-base-300"
+              className="input input-sm input-bordered text-xs font-semibold focus:outline-none border-none bg-base-200"
               required
             />
           </div>
@@ -174,7 +174,7 @@ const RegisterForm = () => {
               type="text"
               name="photoURL"
               placeholder="Enter your photo URL (optional)"
-              className="input input-sm input-bordered text-xs font-semibold focus:outline-none border-none bg-base-300"
+              className="input input-sm input-bordered text-xs font-semibold focus:outline-none border-none bg-base-200"
             />
           </div>
           <div className="form-control relative">
@@ -182,7 +182,7 @@ const RegisterForm = () => {
               type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Enter your password"
-              className="input input-sm input-bordered text-xs font-semibold focus:outline-none border-none bg-base-300"
+              className="input input-sm input-bordered text-xs font-semibold focus:outline-none border-none bg-base-200"
               required
             />
             <span
@@ -197,12 +197,12 @@ const RegisterForm = () => {
             </span>
           </div>
           {passwordError && (
-            <div className="text-sm text-red-500 mt-2 ml-4">
+            <div className="text-sm text-rose-500 mt-2 ml-4">
               <p>{passwordError}</p>
             </div>
           )}
           <div className="form-control mt-6">
-            <button type="submit" className="btn btn-sm mt-2 btn-accent ">
+            <button type="submit" className="btn btn-sm mt-2 btn-primary">
               <span>Register</span>
             </button>
           </div>
@@ -211,7 +211,7 @@ const RegisterForm = () => {
               Already have an account?{" "}
               <Link
                 to="/auth/login"
-                className="font-semibold text-red-700 hover:text-red-600"
+                className="font-semibold text-rose-700 hover:text-rose-600"
               >
                 Login
               </Link>

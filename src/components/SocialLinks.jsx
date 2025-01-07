@@ -2,7 +2,7 @@ import { LuLinkedin } from "react-icons/lu";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiFacebook } from "react-icons/fi";
-import { PiGithubLogoBold } from "react-icons/pi";
+
 
 const SocialLinks = () => {
   return (
@@ -10,18 +10,10 @@ const SocialLinks = () => {
       {/* social icons */}
       <div className="flex gap-3 items-center">
         <a
-          href="https://github.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-9 h-9 flex bg-base-300 items-center justify-center rounded-lg hover:text-accent transition-colors"
-        >
-          <PiGithubLogoBold className="text-lg" />
-        </a>
-        <a
           href="https://www.linkedin.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-9 h-9 flex bg-base-300 items-center justify-center rounded-lg hover:text-accent transition-colors"
+          className="w-9 h-9 flex bg-base-200 items-center justify-center rounded-lg hover:text-accent transition-colors"
         >
           <LuLinkedin className="text-lg" />
         </a>
@@ -29,7 +21,7 @@ const SocialLinks = () => {
           href="https://www.facebook.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-9 h-9 flex bg-base-300 items-center justify-center rounded-lg hover:text-accent transition-colors"
+          className="w-9 h-9 flex bg-base-200 items-center justify-center rounded-lg hover:text-accent transition-colors"
         >
           <FiFacebook className="text-lg" />
         </a>
@@ -37,7 +29,7 @@ const SocialLinks = () => {
           href="https://x.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-9 h-9 flex bg-base-300 items-center justify-center rounded-lg hover:text-accent transition-colors"
+          className="w-9 h-9 flex bg-base-200 items-center justify-center rounded-lg hover:text-accent transition-colors"
         >
           <FaXTwitter />
         </a>
@@ -45,7 +37,7 @@ const SocialLinks = () => {
           href="https://www.instagram.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-9 h-9 flex bg-base-300 items-center justify-center rounded-lg hover:text-accent transition-colors"
+          className="w-9 h-9 flex bg-base-200 items-center justify-center rounded-lg hover:text-accent transition-colors"
         >
           <FaInstagram className="text-lg" />
         </a>

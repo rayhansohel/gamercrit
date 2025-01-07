@@ -62,7 +62,7 @@ const Footer = () => {
                   }`
                 }
               >
-                Contact
+                Contact Us
               </NavLink>
             </div>
           </div>

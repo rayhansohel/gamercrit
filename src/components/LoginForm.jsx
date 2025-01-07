@@ -81,12 +81,12 @@ const LoginForm = () => {
 
   return (
     <div>
-      <div className="card min-w-[350px] bg-base-200 border border-base-100 rounded-3xl flex flex-col items-center justify-center pt-12">
+      <div className="card min-w-[350px] rounded-3xl flex flex-col items-center justify-center pt-12">
         <div>
           <button
             onClick={handleGoogleSignIn}
             type="button"
-            className="btn btn-sm bg-base-100 shadow-none"
+            className="btn btn-sm bg-base-200 shadow-none"
           >
             <FcGoogle className="text-lg" />
             <span>Login with Google</span>
@@ -102,7 +102,7 @@ const LoginForm = () => {
               name="email"
               ref={emailRef}
               placeholder="Enter your email address"
-              className="input input-sm input-bordered text-xs font-semibold focus:outline-none border-none bg-base-300"
+              className="input input-sm input-bordered text-xs font-semibold focus:outline-none border-none bg-base-200"
               required
             />
           </div>
@@ -111,7 +111,7 @@ const LoginForm = () => {
               type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Enter your password"
-              className="input input-sm input-bordered text-xs font-semibold focus:outline-none border-none bg-base-300"
+              className="input input-sm input-bordered text-xs font-semibold focus:outline-none border-none bg-base-200"
               required
             />
             <span
@@ -126,7 +126,7 @@ const LoginForm = () => {
             </span>
           </div>
           <div className="form-control mt-6">
-            <button type="submit" className="btn btn-sm btn-accent ">
+            <button type="submit" className="btn btn-sm btn-primary ">
               <span>Login</span>
             </button>
           </div>
@@ -135,7 +135,7 @@ const LoginForm = () => {
               Don't Have An Account?{" "}
               <Link
                 to="/auth/register"
-                className="font-semibold text-red-700 hover:text-red-600"
+                className="font-semibold text-rose-700 hover:text-rose-600"
               >
                 Register
               </Link>

@@ -56,9 +56,9 @@ const GameWatchListPage = () => {
         {Array(fullStars)
           .fill()
           .map((_, index) => (
-            <AiFillStar key={`full-${index}`} className="text-green-500 text-lg" />
+            <AiFillStar key={`full-${index}`} className="text-accent text-lg" />
           ))}
-        {halfStars && <AiFillStar className="text-green-500 text-lg" />}
+        {halfStars && <AiFillStar className="text-accent text-lg" />}
         {Array(emptyStars)
           .fill()
           .map((_, index) => (

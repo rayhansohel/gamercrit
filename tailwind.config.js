@@ -8,6 +8,10 @@ export default {
       fontFamily: {
         'poppins': ['Poppins', 'serif'],
       },
+      backgroundImage: {
+        login: "url('https://i.ibb.co.com/SdN0P4J/2151136825.jpg')",
+        register: "url('https://i.ibb.co.com/nBBpXsB/2150964608.jpg')",
+      },
     },
   },
   daisyui: {

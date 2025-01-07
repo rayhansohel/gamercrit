@@ -7,7 +7,7 @@ const AboutPage = () => {
   return (
     <div>
       <Helmet>
-        <title>My Reviews - Gamer Crit</title>
+        <title>About Us - Gamer Crit</title>
       </Helmet>
 
       {/* About Brand Section */}

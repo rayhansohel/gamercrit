@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SocialLinks from "./SocialLinks";
 
 const AboutBrand = () => {
   return (
@@ -24,11 +25,7 @@ const AboutBrand = () => {
           and weaknesses of each title, ensuring that gamers receive honest
           feedback.
         </p>
-        <Link to="/reviews">
-          <button className="btn btn-sm btn-accent text-white ">
-            Go to Reviews
-          </button>
-        </Link>
+        <SocialLinks />
       </div>
     </div>
   );

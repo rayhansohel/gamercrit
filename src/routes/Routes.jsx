@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
+import MainLayout from "../Layouts/MainLayout";
+import AuthLayout from "../layouts/AuthLayout";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
@@ -17,7 +18,7 @@ import ContactUsPage from "../pages/ContactUsPage";
 const Routes = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <MainLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -72,12 +73,22 @@ const Routes = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+    ],
+  },
+
+
+//Auth route
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    errorElement: <ErrorPage />,
+    children: [
       {
-        path: "auth/login",
+        path: "login",
         element: <LoginPage />,
       },
       {
-        path: "auth/register",
+        path: "register",
         element: <RegisterPage />,
       },
     ],

@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { Helmet } from "react-helmet-async";
-import Lottie from "lottie-react";
-import loadingAnimation from "../assets/loading.json";
+
 
 const RatingStars = ({ rating }) => {
   const fullStars = Math.floor(rating);
@@ -31,7 +29,7 @@ const GenreTabs = () => {
   const [reviews, setReviews] = useState([]);
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true);
 
   // Fetch reviews from the API
   useEffect(() => {
@@ -65,10 +63,6 @@ const GenreTabs = () => {
 
   return (
     <div>
-      <Helmet>
-        <title>Genres - Gamer Crit</title>
-      </Helmet>
-
       <div>
             {/* Genre Tabs */}
             <div className="mb-6">

@@ -102,7 +102,7 @@ const MenuItems = ({ closeDropdown }) => {
           }`
         }
       >
-        Contact
+        Contact Us
       </NavLink>
     </>
   );
