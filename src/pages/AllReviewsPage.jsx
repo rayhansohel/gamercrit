@@ -17,11 +17,11 @@ const RatingStars = ({ rating }) => {
       {Array(fullStars)
         .fill()
         .map((_, index) => (
-          <AiFillStar key={`full-${index}`} className="text-green-500" />
+          <AiFillStar key={`full-${index}`} className="text-accent" />
         ))}
 
       {/* Half star */}
-      {halfStars && <AiFillStar className="text-green-500" />}
+      {halfStars && <AiFillStar className="text-accen" />}
 
       {/* Empty stars */}
       {Array(emptyStars)

@@ -71,7 +71,7 @@ const AddReviewPage = () => {
           <Lottie animationData={loadingAnimation} className="w-32" />
         </div>
       ) : (
-        <div className="max-w-xl mx-auto my-6 md:my-12 bg-base-200 border border-base-100 rounded-box p-8">
+        <div className="max-w-xl mx-auto my-6 md:my-12 bg-base-200 rounded-box p-8">
           <h1 className="text-2xl mb-6 text-center">Add a New Review</h1>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
@@ -80,7 +80,7 @@ const AddReviewPage = () => {
                 name="title"
                 value={formData.title}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none bg-base-300"
                 placeholder="Enter game title"
                 required
               />
@@ -91,7 +91,7 @@ const AddReviewPage = () => {
                 name="coverImage"
                 value={formData.coverImage}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none bg-base-300"
                 placeholder="Enter image URL"
                 required
               />
@@ -101,7 +101,7 @@ const AddReviewPage = () => {
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none bg-base-300"
                 rows="4"
                 placeholder="Write your review"
                 required
@@ -114,7 +114,7 @@ const AddReviewPage = () => {
                   name="rating"
                   value={formData.rating}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                  className="w-full px-4 py-2 border rounded-md focus:outline-none border-none bg-base-300"
                   placeholder="Rate out of 5"
                   min="1"
                   max="5"
@@ -127,7 +127,7 @@ const AddReviewPage = () => {
                   name="year"
                   value={formData.year}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                  className="w-full px-4 py-2 border rounded-md focus:outline-none border-none bg-base-300"
                   placeholder="Published year"
                   required
                 />
@@ -138,12 +138,12 @@ const AddReviewPage = () => {
                 name="genre"
                 value={formData.genre}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none bg-base-300"
                 required
               >
                 <option value="">Select a Genre</option>
                 <option value="Action">Action</option>
-                <option value="RPG">Sport</option>
+                <option value="RPG">RPG</option>
                 <option value="Adventure">Adventure</option>
               </select>
             </div>
@@ -155,7 +155,7 @@ const AddReviewPage = () => {
                 name="name"
                 value={formData.name}
                 readOnly
-                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none bg-base-300"
               />
             </div>
             <div className="w-full mb-6">
@@ -165,7 +165,7 @@ const AddReviewPage = () => {
                 name="email"
                 value={formData.email}
                 readOnly
-                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none border-none bg-base-300"
               />
             </div>
 
