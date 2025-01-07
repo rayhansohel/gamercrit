@@ -6,11 +6,11 @@ import SocialLinks from "../components/SocialLinks";
 
 const ContactUsPage = () => {
   return (
-    <div className="py-6 lg:py-20">
+    <div className="w-11/12 container mx-auto py-6 lg:py-20">
       <Helmet>
         <title>Contact Us- Rayhan Sohel</title>
       </Helmet>
-      <div className="space-y-6 w-full container mx-auto">
+      <div className="space-y-6 w-full container mx-auto ">
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Contact Information Section */}

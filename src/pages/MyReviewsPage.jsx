@@ -99,9 +99,9 @@ const MyReviewsPage = () => {
         <title>My Reviews - Gamer Crit</title>
       </Helmet>
 
-      <div className="w-11/12 mx-auto my-6 md:my-12">
+      <div className="w-11/12 mx-auto my-6 md:my-20">
         {isLoading ? (
-          <div className="flex justify-center items-center min-h-screen">
+          <div className="flex justify-center items-center h-[calc(100vh-356px)]">
             <Lottie animationData={loadingAnimation} className="w-32" />
           </div>
         ) : errorMessage ? (

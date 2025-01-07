@@ -64,19 +64,42 @@ const ReviewDetailPage = () => {
       return;
     }
 
-    const watchlistItem = {
-      reviewId: id,
-      title: review.title,
-      coverImage: review.coverImage,
-      year: review.year,
-      rating: review.rating,
-      genre: review.genre,
-      email: user.email,
-      username: user.displayName || user.name,
-    };
-
     try {
+      // Check if the game is already in the watchlist
       const response = await fetch(
+        `https://gamercrit-server.vercel.app/watchlist?email=${user.email}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch watchlist for validation.");
+      }
+
+      const currentWatchlist = await response.json();
+
+      // Check if the game is already in the watchlist
+      const isAlreadyAdded = currentWatchlist.some(
+        (item) => item.reviewId === id
+      );
+
+      if (isAlreadyAdded) {
+        toast.info("This game is already in your WatchList!");
+        return;
+      }
+
+      // Prepare the watchlist item
+      const watchlistItem = {
+        reviewId: id,
+        title: review.title,
+        coverImage: review.coverImage,
+        year: review.year,
+        rating: review.rating,
+        genre: review.genre,
+        email: user.email,
+        username: user.displayName || user.name,
+      };
+
+      // Add the game to the watchlist
+      const addResponse = await fetch(
         `https://gamercrit-server.vercel.app/watchlist`,
         {
           method: "POST",
@@ -87,11 +110,11 @@ const ReviewDetailPage = () => {
         }
       );
 
-      if (response.ok) {
+      if (addResponse.ok) {
         setIsAdded(true);
         toast.success("Successfully added to WatchList!");
       } else {
-        throw new Error("Failed to add to WatchList");
+        throw new Error("Failed to add to WatchList.");
       }
     } catch (error) {
       console.error("Error adding to WatchList:", error);

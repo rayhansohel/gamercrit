@@ -74,9 +74,9 @@ const GameWatchListPage = () => {
         <title>Watch List - Gamer Crit</title>
       </Helmet>
 
-      <div className="w-11/12 mx-auto my-6 md:my-12">
+      <div className="w-11/12 mx-auto my-6 md:my-20">
         {loading ? (
-          <div className="flex justify-center items-center h-screen w-screen">
+          <div className="flex justify-center items-center h-[calc(100vh-356px)]">
             <Lottie animationData={loadingAnimation} className="w-32" />
           </div>
         ) : errorMessage ? (
@@ -90,19 +90,19 @@ const GameWatchListPage = () => {
             <table className="table-auto w-full max-w-4xl mx-auto bg-base-200 rounded-box overflow-hidden border-base-100">
               <thead className="bg-base-100">
                 <tr>
-                  <th className="px-4 py-3 border-b border-base-100 text-left">
+                  <th className="px-4 py-3 text-left">
                     Cover Image
                   </th>
-                  <th className="px-4 py-3 border-b border-base-100 text-left">
+                  <th className="px-4 py-3 text-left">
                     Game Title
                   </th>
-                  <th className="px-4 py-3 border-b border-base-100 hidden md:table-cell text-left">
+                  <th className="px-4 py-3 hidden md:table-cell text-left">
                     Genre
                   </th>
-                  <th className="px-4 py-3 border-b border-base-100 hidden md:table-cell text-left">
+                  <th className="px-4 py-3 hidden md:table-cell text-left">
                     Published
                   </th>
-                  <th className="px-4 py-3 border-b border-base-100 text-left">
+                  <th className="px-4 py-3 text-left">
                     Rating
                   </th>
                 </tr>
@@ -110,23 +110,23 @@ const GameWatchListPage = () => {
               <tbody>
                 {watchlist.map((item) => (
                   <tr key={item.reviewId}>
-                    <td className="p-4 border-b border-base-100">
+                    <td className="p-4 border-t border-base-300">
                       <img
                         src={item.coverImage}
                         alt={item.title || "N/A"}
                         className="w-20 md:w-32 h-20 object-cover rounded-lg"
                       />
                     </td>
-                    <td className="px-4 py-3 font-semibold border-b border-base-100">
+                    <td className="px-4 py-3 font-semibold border-t border-base-300">
                       {item.title || "N/A"}
                     </td>
-                    <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">
+                    <td className="px-4 py-3 border-t border-base-300 hidden md:table-cell">
                       {item.genre || "N/A"}
                     </td>
-                    <td className="px-4 py-3 border-b border-base-100 hidden md:table-cell">
+                    <td className="px-4 py-3 border-t border-base-300 hidden md:table-cell">
                       {item.year || "N/A"}
                     </td>
-                    <td className="px-4 py-3 border-b border-base-100">
+                    <td className="px-4 py-3 border-t border-base-300">
                       <RatingStars rating={item.rating} />
                     </td>
                   </tr>
