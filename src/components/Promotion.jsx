@@ -60,20 +60,20 @@ const Promotion = () => {
   return (
     <div>
       <div>
-        <h1 className="text-4xl font-semibold mb-8 text-center">
+        <h1 className="text-3xl font-semibold mb-8 text-center">
           Featured Promotions
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2  lg:grid-cols-4 gap-8">
           {promotions.length > 0 ? (
             promotions.map((promo) => (
-              <div key={promo._id} className="bg-base-100 rounded-box">
+              <div key={promo._id} className="bg-base-200 rounded-box">
                 <img
                   src={promo.coverImage}
                   alt={promo.title}
                   className="w-full object-cover rounded-t-box"
                 />
                 <div className="p-6">
-                  <h3 className="font-bold text-lg">{promo.title}</h3>
+                  <h3 className="font-bold">{promo.title}</h3>
                   <p className="text-sm opacity-70">{promo.genre}</p>
                   <div className="flex items-center mt-2">
                     <RatingStars rating={promo.rating} />
@@ -88,7 +88,7 @@ const Promotion = () => {
               </div>
             ))
           ) : (
-            <p>No promotional games available at the moment.</p>
+            <p>No promotional games available.</p>
           )}
         </div>
       </div>

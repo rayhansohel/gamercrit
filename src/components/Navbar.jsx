@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="bg-base-200/70 backdrop-blur rounded-xl h-12 px-3 flex justify-center lg:justify-between items-center">
+      <div className="bg-base-200/70 backdrop-blur rounded-xl h-12 px-3 flex justify-center xl:justify-between items-center">
         {/* Brand Logo */}
         <div className="flex items-center">
           <Link to="/">
@@ -34,12 +34,12 @@ const Navbar = () => {
         </div>
 
         {/* Menu Items */}
-        <div className="hidden lg:grid grid-flow-col-dense gap-2">
+        <div className="hidden xl:grid grid-flow-col-dense gap-2">
           <MenuItems />
         </div>
 
         {/* Login or register buttons */}
-        <div className="hidden lg:flex space-x-2">
+        <div className="hidden xl:flex space-x-2">
           <div>
             {user && user?.email ? (
               <>

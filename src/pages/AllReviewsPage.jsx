@@ -99,14 +99,17 @@ const AllReviewsPage = () => {
       <Helmet>
         <title>Reviews - Gamer Crit</title>
       </Helmet>
-      <div className="w-11/12 mx-auto my-6 md:my-12">
+      <div className="container w-11/12 mx-auto my-6 md:my-12">
         {loading ? (
           // Loader modal
-          <div className="flex justify-center items-center h-[calc(100vh-200px)]">
+          <div className="flex justify-center items-center h-[calc(100vh-360px)]">
             <Lottie animationData={loadingAnimation} className="w-32" />
           </div>
         ) : (
           <>
+            <h1 className="text-3xl font-semibold mb-6 text-center">
+              All Games
+            </h1>
             {/* Filter and Sort Dropdowns */}
             <div className="flex justify-between items-center mb-6 gap-4">
               {/* Filter by Genre */}
@@ -136,46 +139,39 @@ const AllReviewsPage = () => {
             </div>
 
             {/* Reviews Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-6">
               {filteredReviews.length > 0 ? (
                 filteredReviews.map((review) => (
-                  <div
-                    key={review._id}
-                    className="bg-base-200 border border-base-100 rounded-box p-4"
-                  >
+                  <div key={review._id} className="bg-base-200 rounded-box">
                     <img
                       src={review.coverImage}
                       alt={review.title}
-                      className="w-full max-h-48 min-h-32 object-cover rounded-lg mb-2"
+                      className="w-full object-cover rounded-t-box"
                     />
-                    <h3 className="text-xl font-semibold mb-2">
-                      {review.title}
-                    </h3>
-                    <p>
-                      <span className="font-semibold">Published:</span>{" "}
-                      {review.year}
-                    </p>
-                    <p>
-                      <span className="font-semibold">Genre:</span>{" "}
-                      {review.genre}
-                    </p>
-                    <p className="flex items-center gap-2">
-                      <span className="font-semibold">Ratings:</span>{" "}
-                      <span>
-                        <RatingStars rating={review.rating} />
-                      </span>
-                    </p>
-                    <p>
-                      <span className="font-semibold">Review by:</span>{" "}
-                      {review.name}
-                    </p>
 
-                    <Link
-                      to={`/review/${review._id}`}
-                      className="btn btn-sm btn-accent text-white  mt-4"
-                    >
-                      Explore Details
-                    </Link>
+                    <div className="p-4">
+                      <h3 className="font-bold">{review.title}</h3>
+                      <p className="opacity-70">{review.genre}</p>
+                      <p className="flex items-center pt-2">
+                        <RatingStars rating={review.rating} />
+                      </p>
+                      <div className="pt-2">
+                        <p>
+                          <span className="font-semibold">Published:</span>{" "}
+                          {review.year}
+                        </p>
+                        <p>
+                          <span className="font-semibold">Review by:</span>{" "}
+                          {review.name}
+                        </p>
+                      </div>
+                      <Link
+                        to={`/review/${review._id}`}
+                        className="btn btn-sm btn-primary mt-4"
+                      >
+                        Explore
+                      </Link>
+                    </div>
                   </div>
                 ))
               ) : (

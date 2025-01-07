@@ -5,7 +5,7 @@ import ThemeToggle from "./ThemeToggle";
 const Header = () => {
   return (
     <div className="flex gap-2 container mx-auto w-11/12">
-      <div className="">
+      <div className="xl:hidden">
         <Dropdown />
       </div>
       <div className="flex-grow">

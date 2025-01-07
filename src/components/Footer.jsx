@@ -8,7 +8,7 @@ const Footer = () => {
     <div>
       <div className="container w-11/12 mx-auto space-y-4">
         <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-4">
-          <div className="bg-base-100 rounded-box p-6 md:col-span-2 xl:col-span-1">
+          <div className="bg-base-100 rounded-box p-6 md:col-span-2 xl:col-span-1 flex flex-col items-center text-center xl:items-start xl:text-start">
             <div className="flex items-center mb-2">
               <Link to="/">
                 <div className="flex items-center justify-center col-span-2">
@@ -66,7 +66,7 @@ const Footer = () => {
               </NavLink>
             </div>
           </div>
-          <div className="bg-base-100 rounded-box p-6">
+          <div className="bg-base-100 rounded-box p-6 flex flex-col items-center text-center xl:items-start xl:text-start">
             <div>
               <h2 className="text-xl font-semibold pb-3">Social links</h2>
               <p className="mb-2">
