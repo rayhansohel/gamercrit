@@ -11,6 +11,8 @@ import MyReviewsPage from './../pages/MyReviewsPage';
 import GameWatchListPage from './../pages/GameWatchListPage';
 import ReviewDetailPage from './../pages/ReviewDetailPage';
 import UpdateReviewPage from './../pages/UpdateReviewPage';
+import AboutPage from "../pages/AboutPage";
+import ContactUsPage from "../pages/ContactUsPage";
 
 const Routes = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const Routes = createBrowserRouter([
       {
         path: "/reviews",
         element: <AllReviewsPage />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUsPage />,
       },
       {
         path: "/add-review",

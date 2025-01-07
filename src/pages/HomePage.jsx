@@ -1,11 +1,14 @@
 import { Helmet } from "react-helmet-async";
-import Hero from './../components/Hero';
+import Hero from "./../components/Hero";
 import HighestRatedGames from "../components/HighestRatedGames";
 import ImageSlider from "../components/ImageSlider";
-import AboutBrand from "../components/AboutBrand";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json";
 import { useState, useEffect } from "react";
+import CommunityHighlights from "../components/CommunityHighlights";
+import Promotion from "../components/Promotion";
+import Newsletter from "../components/Newsletter";
+import GenreTabs from "../components/GenreTabs";
 
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,14 +23,14 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-[calc(100vh-96px)] relative">
+    <div>
       <Helmet>
-        <title>Home - Gamer Crit</title>
+        <title>Gamer Crit</title>
       </Helmet>
 
       {/* Loader Modal */}
       {isLoading && (
-        <div className="flex justify-center items-center h-[calc(100vh-200px)]">
+        <div className="flex justify-center items-center h-[calc(100vh-356px)]">
           <Lottie animationData={loadingAnimation} className="w-32" />
         </div>
       )}
@@ -36,23 +39,38 @@ const HomePage = () => {
       {!isLoading && (
         <>
           {/* Display Hero Slider */}
-          <div>
+          <div className="pb-8 lg:pb-20">
             <Hero />
           </div>
 
           {/* Display high rated games */}
-          <div className="w-11/12 mx-auto my-8">
+          <div className="container w-11/12 mx-auto pb-8 lg:pb-20">
             <HighestRatedGames />
           </div>
 
-          {/* Game Image slider */}
-          <div>
-            <ImageSlider />
+          {/* Community Section */}
+          <div className="bg-base-200 pb-8 lg:pb-20">
+            <CommunityHighlights />
           </div>
 
           {/* About Brand Section */}
-          <div className="w-11/12 mx-auto my-8">
-            <AboutBrand />
+          <div className="container w-11/12 mx-auto py-8 lg:py-20">
+            <GenreTabs />
+          </div>
+          
+          {/* Game Image slider */}
+          <div className="pb-8 lg:pb-20">
+            <ImageSlider />
+          </div>
+
+          {/* Promotion Section */}
+          <div className="container w-11/12 mx-auto pb-8 lg:pb-20">
+            <Promotion />
+          </div>
+
+          {/* Wy Choose Section */}
+          <div className="container w-11/12 mx-auto pb-8 lg:pb-20">
+            <Newsletter />
           </div>
         </>
       )}
@@ -61,4 +79,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-

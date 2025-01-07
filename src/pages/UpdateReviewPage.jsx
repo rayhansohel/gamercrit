@@ -82,7 +82,7 @@ const UpdateReviewPage = () => {
           body: JSON.stringify(formData),
         }
       );
-  
+
       if (response.ok) {
         const updatedReview = await response.json();
         console.log("Updated Review:", updatedReview);
@@ -130,7 +130,9 @@ const UpdateReviewPage = () => {
                 />
               </div>
               <div className="mb-4">
-                <label className="block font-medium mb-2">Cover Image URL</label>
+                <label className="block font-medium mb-2">
+                  Cover Image URL
+                </label>
                 <input
                   type="url"
                   name="coverImage"
@@ -220,7 +222,7 @@ const UpdateReviewPage = () => {
 
               <button
                 type="submit"
-                className="btn btn-sm text-white bg-pink-600 hover:bg-pink-700 py-2 px-4"
+                className="btn btn-sm text-white btn-accent  py-2 px-4"
                 disabled={loading} // Disable the button while loading
               >
                 Update Review

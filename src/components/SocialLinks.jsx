@@ -1,48 +1,53 @@
-import { FaFacebook, FaGithub, FaInstagram, FaYoutube } from "react-icons/fa";
+import { LuLinkedin } from "react-icons/lu";
+import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { FiFacebook } from "react-icons/fi";
+import { PiGithubLogoBold } from "react-icons/pi";
 
 const SocialLinks = () => {
   return (
-    <div className="min-w-full  flex rounded-box">
-      {/* social icons  */}
-      <div className="flex gap-4">
+    <div className="pt-4">
+      {/* social icons */}
+      <div className="flex gap-3 items-center">
         <a
-          href="https://www.facebook.com/RayhanSohel"
+          href="https://github.com/"
           target="_blank"
-          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-pink-600 hover:text-gray-700"
+          rel="noopener noreferrer"
+          className="w-9 h-9 flex bg-base-300 items-center justify-center rounded-lg hover:text-accent transition-colors"
         >
-          <FaFacebook />
+          <PiGithubLogoBold className="text-lg" />
         </a>
         <a
-          href="https://x.com/rrayhanSohel"
+          href="https://www.linkedin.com/"
           target="_blank"
-          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-pink-600 hover:text-gray-700"
+          rel="noopener noreferrer"
+          className="w-9 h-9 flex bg-base-300 items-center justify-center rounded-lg hover:text-accent transition-colors"
+        >
+          <LuLinkedin className="text-lg" />
+        </a>
+        <a
+          href="https://www.facebook.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-9 h-9 flex bg-base-300 items-center justify-center rounded-lg hover:text-accent transition-colors"
+        >
+          <FiFacebook className="text-lg" />
+        </a>
+        <a
+          href="https://x.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-9 h-9 flex bg-base-300 items-center justify-center rounded-lg hover:text-accent transition-colors"
         >
           <FaXTwitter />
         </a>
         <a
-          href="https://www.instagram.com/arayhansohel/"
+          href="https://www.instagram.com/"
           target="_blank"
-          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-pink-600 hover:text-gray-700"
+          rel="noopener noreferrer"
+          className="w-9 h-9 flex bg-base-300 items-center justify-center rounded-lg hover:text-accent transition-colors"
         >
-          {" "}
-          <FaInstagram />
-        </a>
-        <a
-          href="https://github.com/RayhanSohel"
-          target="_blank"
-          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-pink-600 hover:text-gray-700"
-        >
-          {" "}
-          <FaGithub />
-        </a>
-        <a
-          href="https://www.youtube.com/@arayhansohel"
-          target="_blank"
-          className="text-xl w-10 h-10 bg-base-100 flex items-center justify-center rounded-lg text-pink-600 hover:text-gray-700"
-        >
-          {" "}
-          <FaYoutube />
+          <FaInstagram className="text-lg" />
         </a>
       </div>
     </div>

@@ -1,4 +1,3 @@
-
 import HeroSlider from './HeroSlider';
 
 const Hero = () => {

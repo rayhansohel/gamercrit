@@ -42,7 +42,7 @@ const HeroSlider = () => {
           <div
             id={`slide${index + 1}`}
             key={slide.id}
-            className="carousel-item relative w-full max-h-[700px] min-h-[600px]"
+            className="carousel-item relative w-full min-h-[600px]"
           >
             <img
               src={slide.image}
@@ -50,16 +50,20 @@ const HeroSlider = () => {
               className="w-full object-cover"
             />
             {/* Title and Paragraph */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center text-white p-10 w-[400px] md:w-[700px] h-[300px] bg-[#0000002c] backdrop-blur-sm rounded-box">
-              <h2 className="text-3xl md:text-5xl mb-2 uppercase text-pink-600">
-                {slide.title}
-              </h2>
-              <p className="text-md">{slide.paragraph}</p>
-              <Link to="/reviews">
-                <button className="btn btn-sm mt-4 bg-pink-600 hover:bg-pink-700 text-white border-none shadow-none">
-                  Explore More
-                </button>
-              </Link>
+            <div className="absolute w-full h-full bg-gradient-to-r from-black to-black/20">
+              <div className="container mx-auto w-11/12 flex h-full items-center">
+                <div className="flex flex-col justify-center text-white max-w-80 md:max-w-xl space-y-2">
+                  <h2 className="text-4xl md:text-6xl mb-2 uppercase font-poppins">
+                    {slide.title}
+                  </h2>
+                  <p className="text-md">{slide.paragraph}</p>
+                  <Link to="/reviews">
+                    <button className="btn btn-sm mt-4 btn-accent  text-white border-none shadow-none">
+                      Explore More
+                    </button>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         ))}
@@ -71,9 +75,9 @@ const HeroSlider = () => {
           <button
             key={btnIndex}
             onClick={() => scrollToSlide(btnIndex)}
-            className={`btn btn-xs w-7 h-7 border-none hover:bg-pink-600 ${
+            className={`btn btn-xs w-7 h-7 border-none hover:btn-accent ${
               currentSlide === btnIndex
-                ? "bg-pink-600 text-white"
+                ? "btn-accent text-white"
                 : "bg-base-200 "
             }`}
             aria-label={`Go to slide ${btnIndex + 1}`}

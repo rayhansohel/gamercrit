@@ -187,7 +187,7 @@ const RegisterForm = () => {
             />
             <span
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-2 top-[7px] cursor-pointer hover:text-pink-600"
+              className="absolute right-2 top-[7px] cursor-pointer hover:text-accent"
             >
               {showPassword ? (
                 <AiFillEyeInvisible size={20} />
@@ -202,10 +202,7 @@ const RegisterForm = () => {
             </div>
           )}
           <div className="form-control mt-6">
-            <button
-              type="submit"
-              className="btn btn-sm mt-2 bg-pink-600 hover:bg-pink-700"
-            >
+            <button type="submit" className="btn btn-sm mt-2 btn-accent ">
               <span>Register</span>
             </button>
           </div>

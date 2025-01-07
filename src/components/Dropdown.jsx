@@ -36,7 +36,7 @@ const Dropdown = () => {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className="btn btn-sm shadow-none h-8 w-10"
+        className="w-12 h-12 rounded-xl bg-base-200/70 backdrop-blur flex items-center justify-center"
       >
         {isOpen ? (
           <span className="text-2xl">
@@ -50,8 +50,8 @@ const Dropdown = () => {
       </button>
 
       {isOpen && (
-        <div className="text-sm absolute top-16 -left-3  w-[300px] ">
-          <div className="flex p-5 bg-base-200 border border-base-100 rounded-box">
+        <div className="text-sm absolute top-14 w-[300px]">
+          <div className="flex p-5 bg-base-200/70 backdrop-blur rounded-box">
             <div>
               <div className="space-y-2">
                 {!user && (
@@ -59,7 +59,7 @@ const Dropdown = () => {
                     to="/auth/register"
                     type="button"
                     onClick={closeDropdown}
-                    className="btn btn-sm w-full bg-base-100 shadow-none"
+                    className="btn btn-sm w-full btn-primary shadow-none"
                   >
                     <span>Register</span>
                   </NavLink>
@@ -86,7 +86,7 @@ const Dropdown = () => {
                             closeDropdown();
                           }}
                           type="button"
-                          className="btn btn-sm w-full bg-base-100 shadow-none"
+                          className="btn btn-sm btn-primary w-full shadow-none"
                         >
                           <span>Logout</span>
                         </NavLink>
@@ -97,7 +97,7 @@ const Dropdown = () => {
                       to="/auth/login"
                       type="button"
                       onClick={closeDropdown}
-                      className="btn btn-sm bg-base-100 shadow-none text-pink-600 w-full"
+                      className="btn btn-sm btn-accent shadow-none w-full"
                     >
                       <span>Login</span>
                     </NavLink>

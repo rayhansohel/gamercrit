@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
@@ -147,13 +148,16 @@ const AllReviewsPage = () => {
                       alt={review.title}
                       className="w-full max-h-48 min-h-32 object-cover rounded-lg mb-2"
                     />
-                    <h3 className="text-xl font-semibold mb-2">{review.title}</h3>
+                    <h3 className="text-xl font-semibold mb-2">
+                      {review.title}
+                    </h3>
                     <p>
                       <span className="font-semibold">Published:</span>{" "}
                       {review.year}
                     </p>
                     <p>
-                      <span className="font-semibold">Genre:</span> {review.genre}
+                      <span className="font-semibold">Genre:</span>{" "}
+                      {review.genre}
                     </p>
                     <p className="flex items-center gap-2">
                       <span className="font-semibold">Ratings:</span>{" "}
@@ -168,7 +172,7 @@ const AllReviewsPage = () => {
 
                     <Link
                       to={`/review/${review._id}`}
-                      className="btn btn-sm bg-pink-600 text-white hover:bg-pink-700 mt-4"
+                      className="btn btn-sm btn-accent text-white  mt-4"
                     >
                       Explore Details
                     </Link>
@@ -186,4 +190,3 @@ const AllReviewsPage = () => {
 };
 
 export default AllReviewsPage;
-

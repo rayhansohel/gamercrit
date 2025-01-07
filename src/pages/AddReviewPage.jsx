@@ -17,7 +17,7 @@ const AddReviewPage = () => {
     email: user?.email || "",
     name: user?.displayName || "",
   });
-  const [loading, setLoading] = useState(false); // Track loading state
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -171,7 +171,7 @@ const AddReviewPage = () => {
 
             <button
               type="submit"
-              className="btn btn-sm text-white bg-pink-600 hover:bg-pink-700 py-2 px-4"
+              className="btn btn-sm text-white btn-accent  py-2 px-4"
             >
               Submit Review
             </button>

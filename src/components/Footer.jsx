@@ -1,13 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import BrandLogo from "../assets/gamercrit_logo.png";
 import SocialLinks from "./SocialLinks";
+
 
 const Footer = () => {
   return (
     <div>
-      <div className="space-y-4">
-        <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-4">
-          <div className="bg-base-200 border border-base-100 rounded-box p-6 md:col-span-2 xl:col-span-1">
+      <div className="container w-11/12 mx-auto space-y-4">
+        <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-4">
+          <div className="bg-base-100 rounded-box p-6 md:col-span-2 xl:col-span-1">
             <div className="flex items-center mb-2">
               <Link to="/">
                 <div className="flex items-center justify-center col-span-2">
@@ -27,27 +28,45 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="bg-base-200 border border-base-100 rounded-box p-6">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-xl font-semibold mb-4">Stay Updated</h2>
-              <p className="mb-2">
-                Subscribe to our newsletter for the latest game reviews,
-                insights, updates, and exclusive gaming tips delivered straight
-                to your inbox!
-              </p>
-              <div className="flex w-full">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 p-2 rounded-l-md focus:outline-none"
-                />
-                <button className="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-r-md">
-                  Subscribe
-                </button>
-              </div>
+          <div className="bg-base-100 rounded-box p-6">
+            <div>
+              <h2 className="text-xl text-center font-semibold mb-4">Usefu Links</h2>
+              {/* Menu Items */}
+              <NavLink
+                to="/reviews"
+                className={({ isActive }) =>
+                  `btn btn-sm w-full bg-transparent border-none shadow-none ${
+                    isActive ? "text-accent" : "hover:text-accent transition"
+                  }`
+                }
+              >
+                Reviews
+              </NavLink>
+
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `btn btn-sm bg-transparent border-none shadow-none w-full ${
+                    isActive ? "text-accent" : "hover:text-accent transition"
+                  }`
+                }
+              >
+                About Us
+              </NavLink>
+
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `btn btn-sm bg-transparent border-none shadow-none w-full ${
+                    isActive ? "text-accent" : "hover:text-accent transition"
+                  }`
+                }
+              >
+                Contact
+              </NavLink>
             </div>
           </div>
-          <div className="bg-base-200 border border-base-100 rounded-box p-6">
+          <div className="bg-base-100 rounded-box p-6">
             <div>
               <h2 className="text-xl font-semibold pb-3">Social links</h2>
               <p className="mb-2">
@@ -58,9 +77,14 @@ const Footer = () => {
             <SocialLinks />
           </div>
         </div>
-        <div className="w-11/12 m-auto bg-base-200 border border-base-100 rounded-box py-2 px-4 h-16 flex justify-center items-center">
+        <div className="bg-base-100 rounded-box py-2 px-4 h-12 flex justify-center items-center">
           <p className="text-sm">
-            © {new Date().getFullYear()}. Gamer Crit. All rights reserved.
+          {new Date().getFullYear()}{" "}
+
+            <span> © All rights reserved by </span>
+            <Link to="/" className="text-accent font-semibold">
+              Gamer Crit
+            </Link>
           </p>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const RatingStars = ({ rating }) => {
@@ -13,9 +12,9 @@ const RatingStars = ({ rating }) => {
       {Array(fullStars)
         .fill()
         .map((_, index) => (
-          <AiFillStar key={`full-${index}`} className="text-green-500" />
+          <AiFillStar key={`full-${index}`} className="text-accent" />
         ))}
-      {halfStars && <AiFillStar className="text-green-500" />}
+      {halfStars && <AiFillStar className="text-accent" />}
       {Array(emptyStars)
         .fill()
         .map((_, index) => (
@@ -31,7 +30,9 @@ const HighestRatedGames = () => {
   useEffect(() => {
     const fetchHighestRatedReviews = async () => {
       try {
-        const response = await fetch("https://gamercrit-server.vercel.app/reviews");
+        const response = await fetch(
+          "https://gamercrit-server.vercel.app/reviews"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch highest-rated reviews");
         }
@@ -47,40 +48,32 @@ const HighestRatedGames = () => {
   }, []);
 
   return (
-    <div className="p-4">
-      <Helmet>
-        <title>Highest Rated Games - Gamer Crit</title>
-      </Helmet>
-      <h1 className="text-xl font-semibold mb-6 text-center">Top Rated Games</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6">
+    <div>
+      <h1 className="text-3xl font-semibold mb-6 text-center">
+        Top Rated Games
+      </h1>
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6">
         {highestRatedReviews.length > 0 ? (
           highestRatedReviews.map((review) => (
-            <div
-              key={review._id}
-              className="bg-base-200 border border-base-100 rounded-box p-4"
-            >
+            <div key={review._id} className="bg-base-200 rounded-box">
               <img
                 src={review.coverImage}
                 alt={review.title}
-                className="w-full max-h-48 min-h-32 object-cover rounded-lg mb-2"
+                className="w-full object-cover rounded-t-box"
               />
-              <h3 className="text-pink-600 font-bold mb-2">{review.title}</h3>
-              <p>
-                <span className="font-semibold">Genre:</span> {review.genre}
-              </p>
-              <p className="flex items-center gap-2">
-                <span className="font-semibold">Ratings:</span>{" "}
-                <span>
+              <div className="p-4">
+                <h3 className="font-bold">{review.title}</h3>
+                <p className="opacity-70">{review.genre}</p>
+                <p className="flex items-center pt-2">
                   <RatingStars rating={review.rating} />
-                </span>
-              </p>
-
-              <Link
-                to={`/review/${review._id}`}
-                className="btn btn-sm bg-pink-600 text-white hover:bg-pink-700 mt-4"
-              >
-                Explore Details
-              </Link>
+                </p>
+                <Link
+                  to={`/review/${review._id}`}
+                  className="btn btn-sm btn-primary mt-4"
+                >
+                  Explore
+                </Link>
+              </div>
             </div>
           ))
         ) : (

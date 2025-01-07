@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 import Lottie from "lottie-react";
 import loginAnimation from "../assets/login-animation.json";
 
@@ -28,7 +27,7 @@ const NeedLoginModal = ({ isOpen, onClose, onRedirect }) => {
             Cancel
           </button>
           <button
-            className="btn btn-sm bg-pink-600 hover:bg-pink-700 text-white border-none shadow-none"
+            className="btn btn-sm btn-accent  text-white border-none shadow-none"
             onClick={onRedirect}
           >
             Go to Login

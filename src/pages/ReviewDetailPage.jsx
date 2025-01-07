@@ -32,7 +32,7 @@ const RatingStars = ({ rating }) => {
 
 const ReviewDetailPage = () => {
   const { id } = useParams();
-  const { user } = useAuth(); // Access user from context
+  const { user } = useAuth();
   const [review, setReview] = useState(null);
   const [isAdded, setIsAdded] = useState(false);
 
@@ -144,13 +144,13 @@ const ReviewDetailPage = () => {
               onClick={handleAddToWatchList}
               disabled={isAdded}
               className={`btn btn-sm ${
-                isAdded ? "bg-gray-500" : "bg-pink-600 hover:bg-pink-700"
+                isAdded ? "bg-gray-500" : "btn-accent "
               } text-white`}
             >
               {isAdded ? "Added to WatchList" : "Add to WatchList"}
             </button>
           ) : (
-            <button className="btn btn-sm bg-base-300 text-pink-600 cursor-not-allowed">
+            <button className="btn btn-sm bg-base-300 text-accent cursor-not-allowed">
               You must be logged in to add to WatchList
             </button>
           )}
@@ -161,4 +161,3 @@ const ReviewDetailPage = () => {
 };
 
 export default ReviewDetailPage;
-

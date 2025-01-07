@@ -13,10 +13,10 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <HelmetProvider>
       <AuthProvider>
-      <ThemeProvider>
+        <ThemeProvider>
           <RouterProvider router={Routes} />
           <ToastContainer />
-          </ThemeProvider>
+        </ThemeProvider>
       </AuthProvider>
     </HelmetProvider>
   </StrictMode>

@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const RatingStars = ({ rating }) => {
@@ -25,9 +25,9 @@ const RatingStars = ({ rating }) => {
 };
 
 const ImageSlider = () => {
-  const [slides, setSlides] = useState([]); // To store image, title, and rating data
-  const [currentIndex, setCurrentIndex] = useState(1); // Start with the 1st actual image
-  const slideInterval = 3000; // 3 seconds for auto-slide
+  const [slides, setSlides] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const slideInterval = 3000;
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const ImageSlider = () => {
       if (!isAnimating) nextSlide();
     }, slideInterval);
 
-    return () => clearInterval(interval); // Clean up interval on unmount
+    return () => clearInterval(interval);
   }, [isAnimating]);
 
   const nextSlide = () => {
@@ -75,7 +75,7 @@ const ImageSlider = () => {
   const prevSlide = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setCurrentIndex((prevIndex) => prevIndex - 1);
+    setCurrentIndex((prevIndex) => prevIndex - 2);
   };
 
   // Handle transition end for looping effect
@@ -83,21 +83,15 @@ const ImageSlider = () => {
     setIsAnimating(false);
 
     if (currentIndex === slides.length - 1) {
-      // Reset to the real first slide
       setCurrentIndex(1);
     } else if (currentIndex === 0) {
-      // Reset to the real last slide
       setCurrentIndex(slides.length - 2);
     }
   };
 
   return (
     <div>
-      <Helmet>
-        <title>Image Slider - Gamer Crit</title>
-      </Helmet>
-
-      <div className="w-full overflow-hidden relative mb-6 md:mb-12">
+      <div className="w-full overflow-hidden relative">
         <div
           className="flex transition-transform duration-500"
           style={{

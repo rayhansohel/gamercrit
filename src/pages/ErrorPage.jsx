@@ -7,7 +7,7 @@ const ErrorPage = () => {
   return (
     <div>
       <Helmet>
-        <title>Error 404 - Grone</title>
+        <title>Error 404 - Gamer Crit</title>
       </Helmet>
       <div className="min-h-screen flex flex-col gap-4 justify-center items-center px-4 text-center font-poppins bg-base-300">
         <Lottie animationData={loginAnimation} className="w-60 mb-10" />
@@ -15,7 +15,7 @@ const ErrorPage = () => {
           Oops! The page you're looking for doesn't exist.
         </p>
         <Link to="/">
-          <button className="btn btn-sm mt-4 bg-pink-600 hover:bg-pink-700 text-white border-none shadow-none">
+          <button className="btn btn-sm mt-4 btn-accent  text-white border-none shadow-none">
             Go to Homepage
           </button>
         </Link>

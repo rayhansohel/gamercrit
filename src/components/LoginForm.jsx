@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../contexts/AuthContext";
 
-
 const LoginForm = () => {
   const { userLogin, setUser, signInWithGoogle, user } =
     useContext(AuthContext);
@@ -16,7 +15,6 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (user) {
-      // If user is already logged in, redirect to home page
       navigate("/");
     }
   }, [user, navigate]);
@@ -63,7 +61,7 @@ const LoginForm = () => {
           hideProgressBar: true,
         });
         window.location.reload();
-        
+
         // Check if there's a redirect path saved in localStorage
         const redirectTo = localStorage.getItem("redirectTo");
         if (redirectTo) {
@@ -117,7 +115,7 @@ const LoginForm = () => {
               required
             />
             <span
-              className="absolute right-2 top-[7px] cursor-pointer hover:text-pink-600"
+              className="absolute right-2 top-[7px] cursor-pointer hover:text-accent"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? (
@@ -128,10 +126,7 @@ const LoginForm = () => {
             </span>
           </div>
           <div className="form-control mt-6">
-            <button
-              type="submit"
-              className="btn btn-sm bg-pink-600 hover:bg-pink-700"
-            >
+            <button type="submit" className="btn btn-sm btn-accent ">
               <span>Login</span>
             </button>
           </div>

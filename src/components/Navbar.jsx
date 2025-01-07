@@ -20,36 +20,26 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-200 border border-base-100 rounded-box px-4 flex justify-center">
+      <div className="bg-base-200/70 backdrop-blur rounded-xl h-12 px-3 flex justify-center lg:justify-between items-center">
         {/* Brand Logo */}
-        <div className="lg:navbar-start flex items-center">
+        <div className="flex items-center">
           <Link to="/">
-            <div className="flex items-center justify-center">
-              <img src={BrandLogo} alt="Brand Logo" className="w-10" />
-              <h1 className="text-xl font-semibold uppercase">Gamer Crit</h1>
+            <div className="flex gap-1 items-center justify-center">
+              <img src={BrandLogo} alt="Brand Logo" className="w-8" />
+              <h1 className="text-lg font-poppins font-bold uppercase tracking-wider">
+                Gamer Crit
+              </h1>
             </div>
           </Link>
         </div>
-        
 
         {/* Menu Items */}
-        <div className="navbar-center hidden lg:grid grid-flow-col-dense gap-2">
+        <div className="hidden lg:grid grid-flow-col-dense gap-2">
           <MenuItems />
         </div>
 
         {/* Login or register buttons */}
-        <div className="hidden lg:flex navbar-end space-x-2">
-          {/* Conditionally hide Register button if user is logged in */}
-          {!user && (
-            <NavLink
-              to="/auth/register"
-              type="button"
-              className="btn btn-sm bg-base-100 shadow-none hover:text-pink-600"
-            >
-              <span>Register</span>
-            </NavLink>
-          )}
-
+        <div className="hidden lg:flex space-x-2">
           <div>
             {user && user?.email ? (
               <>
@@ -58,12 +48,12 @@ const Navbar = () => {
                     to="/"
                     onClick={logOut}
                     type="button"
-                    className="btn btn-sm bg-base-100 shadow-none hover:text-pink-600"
+                    className="btn btn-sm btn-primary border-none shadow-none hover:text-accent"
                   >
                     <span>Logout</span>
                   </NavLink>
                   <div className="avatar cursor-pointer">
-                    <div className="w-9">
+                    <div className="w-7">
                       <img
                         src={user.photoURL || defaultAvatar}
                         alt="User Avatar"
@@ -73,7 +63,7 @@ const Navbar = () => {
                       />
                     </div>
                     {/* Tooltip Component */}
-                    <Tooltip/>
+                    <Tooltip />
                   </div>
                 </div>
               </>
@@ -81,12 +71,22 @@ const Navbar = () => {
               <NavLink
                 to="/auth/login"
                 type="button"
-                className="btn btn-sm bg-base-100 shadow-none text-pink-600"
+                className="btn btn-sm shadow-none"
               >
                 <span>Login</span>
               </NavLink>
             )}
           </div>
+          {/* Conditionally hide Register button if user is logged in */}
+          {!user && (
+            <NavLink
+              to="/auth/register"
+              type="button"
+              className="btn btn-sm btn-primary shadow-none"
+            >
+              <span>Register</span>
+            </NavLink>
+          )}
         </div>
       </div>
     </div>
