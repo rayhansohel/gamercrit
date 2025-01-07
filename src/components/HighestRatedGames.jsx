@@ -77,7 +77,7 @@ const HighestRatedGames = () => {
             </div>
           ))
         ) : (
-          <p>No reviews found.</p>
+          <p className="text-center">No reviews found.</p>
         )}
       </div>
     </div>

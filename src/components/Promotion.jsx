@@ -88,7 +88,7 @@ const Promotion = () => {
               </div>
             ))
           ) : (
-            <p>No promotional games available.</p>
+            <p className="text-center">No promotional games available.</p>
           )}
         </div>
       </div>

@@ -107,7 +107,7 @@ const MyReviewsPage = () => {
         ) : errorMessage ? (
           <p className="text-red-500">{errorMessage}</p>
         ) : reviews.length === 0 ? (
-          <p className="text-gray-600">No reviews found.</p>
+          <p className="text-center">No reviews found.</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="table-auto w-full max-w-4xl mx-auto bg-base-200 rounded-box overflow-hidden border-base-300">

@@ -59,7 +59,7 @@ const AllReviewsPage = () => {
         setLoading(false); // Stop loader
       } catch (error) {
         console.error("Failed to fetch reviews", error);
-        setLoading(false); // Stop loader even on error
+        setLoading(false); 
       }
     };
 
@@ -72,9 +72,9 @@ const AllReviewsPage = () => {
 
     const sortedReviews = [...filteredReviews].sort((a, b) => {
       if (criteria === "Rating") {
-        return b.rating - a.rating; // Sort by descending rating
+        return b.rating - a.rating; 
       } else if (criteria === "Year") {
-        return b.year - a.year; // Sort by descending year
+        return b.year - a.year;
       }
       return 0;
     });
@@ -87,7 +87,7 @@ const AllReviewsPage = () => {
     setSelectedGenre(genre);
 
     if (genre === "All") {
-      setFilteredReviews(reviews); // Show all reviews
+      setFilteredReviews(reviews); 
     } else {
       const filtered = reviews.filter((review) => review.genre === genre);
       setFilteredReviews(filtered);
@@ -175,7 +175,7 @@ const AllReviewsPage = () => {
                   </div>
                 ))
               ) : (
-                <p>No reviews found.</p>
+                <p className="text-cente">No reviews found.</p>
               )}
             </div>
           </>

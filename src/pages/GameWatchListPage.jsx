@@ -82,7 +82,7 @@ const GameWatchListPage = () => {
         ) : errorMessage ? (
           <p className="text-red-500">{errorMessage}</p>
         ) : watchlist.length === 0 ? (
-          <p className="text-gray-600">
+          <p className="text-center">
             No games added to your watchlist yet. Start exploring reviews!
           </p>
         ) : (
