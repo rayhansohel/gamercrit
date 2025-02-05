@@ -1,3 +1,8 @@
+<div align="center">
+  <img height="" src="https://github.com/rayhansohel/gamercrit/blob/main/src/assets/gamercrit.png"  />
+</div><br>
+
+
 # <img src="src/assets/gamercrit_logo.png" alt="" width="40px"> Gamer Crit
 
 
